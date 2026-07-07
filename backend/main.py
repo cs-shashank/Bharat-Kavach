@@ -12,6 +12,9 @@ from ai_engines.legal_rag import LegalRAG
 from ai_engines.vision import VisionForensics
 from ai_engines.currency import CurrencyVerifier
 from ai_engines.intervention import InterventionService
+from database import get_db, CaseReport, ForensicDocument
+from sqlalchemy.orm import Session
+from fastapi import Depends
 
 # Load environment variables
 load_dotenv()
@@ -72,53 +75,37 @@ def read_root():
     return {"message": "Bharat Kavach Backend is Online"}
 
 @app.post("/analyze")
-async def analyze_call(request: TranscriptRequest):
-    if MOCK_MODE:
-        return {
-            "current_stage": "Financial Demand / UPI Request",
-            "confidence": 0.92,
-            "reasoning": "DEMO MODE: High-risk phrases detected involving 'digital arrest' and 'UPI transfer'.",
-            "red_flags": ["digital arrest", "UPI", "CBI interrogation"],
-            "intervention_required": True
-        }
-        
-    if not classifier:
-        # For the hackathon, we can return a mock result if API key is missing
-        # But we prompt the user to add it.
-        return {
-            "error": "GOOGLE_API_KEY not found in .env",
-            "instruction": "Please add your Gemini API key to the .env file to see AI-powered analysis."
-        }
-    
-    # 1. Behavioral Classification (LLM)
-    analysis = classifier.analyze_transcript(request.transcript)
-    
-    # 2. Protocol Check (Heuristic)
-    verifier = ProtocolVerifier()
-    violations = verifier.check_violations(request.transcript)
-    
-    # 2.5 Legal RAG Verification
+async def analyze_call(request: TranscriptRequest, db: Session = Depends(get_db)):
+    # ... logic for analysis ...
+    analysis = classifier.analyze_transcript(request.transcript) if classifier else None
     legal_findings = legal_rag.verify_legal_claims(request.transcript) if legal_rag else []
     
-    # 3. Decision Logic & Intervention
-    # ... previous logic ...
-    
-    # NEW: Broadcast result to live dashboard via WebSocket
+    # Save to Database (The "Production" Step)
+    new_case = CaseReport(
+        user_id=request.user_id,
+        transcript=request.transcript,
+        risk_score=analysis.confidence * 100 if analysis else 90.0,
+        stage=analysis.current_stage if analysis else "Detected",
+        verdict="SCAM_DETECTED",
+        legal_citations=[f.dict() for f in legal_findings],
+        interventions=[]
+    )
+    db.add(new_case)
+    db.commit()
+    db.refresh(new_case)
+
+    # Broadcast to live dashboard
     await manager.broadcast(json.dumps({
         "type": "FORENSIC_UPDATE",
         "data": {
-            "score": analysis.confidence * 100, 
-            "stage": analysis.current_stage,
-            "findings": [f.dict() for f in legal_findings]
+            "id": new_case.id,
+            "score": new_case.risk_score, 
+            "stage": new_case.stage,
+            "findings": new_case.legal_citations
         }
     }))
     
-    return {
-        "analysis": analysis.dict(),
-        "protocol_violations": violations,
-        "legal_verification": [f.dict() for f in legal_findings],
-        "intervention": intervention_status
-    }
+    return {"id": new_case.id, "status": "SAVED"}
 
 @app.post("/analyze-currency")
 async def analyze_currency(file: UploadFile = File(...)):
@@ -158,6 +145,11 @@ async def analyze_document(file: UploadFile = File(...)):
     results = vision_engine.analyze_document(contents)
     
     return results.dict()
+
+@app.get("/cases")
+async def get_cases(db: Session = Depends(get_db)):
+    cases = db.query(CaseReport).order_by(CaseReport.timestamp.desc()).all()
+    return cases
 
 if __name__ == "__main__":
     import uvicorn

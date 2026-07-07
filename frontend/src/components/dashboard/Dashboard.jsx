@@ -3,7 +3,10 @@ import RiskMeter from '../forensics/RiskMeter';
 import ForensicSignals from '../forensics/ForensicSignals';
 import LegalAudit from '../forensics/LegalAudit';
 import InterventionLog from '../forensics/InterventionLog';
-import { Shield, Activity, Users, Map, Bell } from 'lucide-react';
+import FraudNetwork from '../forensics/FraudNetwork';
+import CrimeMap from '../forensics/CrimeMap';
+import CaseHistory from './CaseHistory';
+import { Shield, Activity, Users, Map as MapIcon, Bell, Download, ShieldAlert } from 'lucide-react';
 
 const Dashboard = () => {
   const [caseData, setCaseData] = useState({
@@ -11,11 +14,33 @@ const Dashboard = () => {
     stage: 'Awaiting Stream',
     signals: { behavioral: 0, legal: 100, vision: 100, protocol: 100 },
     findings: [],
-    interventions: []
+    interventions: [],
+    history: []
   });
 
-  // Real-time WebSocket connection
+  // On Mount: Fetch historical cases
   useEffect(() => {
+    const fetchCases = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/cases');
+        const data = await response.json();
+        if (data.length > 0) {
+          const latest = data[0];
+          setCaseData(prev => ({
+            ...prev,
+            score: latest.risk_score,
+            stage: latest.stage,
+            findings: latest.legal_citations,
+            interventions: latest.interventions || [],
+            history: data
+          }));
+        }
+      } catch (error) {
+        console.error("Failed to fetch cases:", error);
+      }
+    };
+    fetchCases();
+
     const clientId = "POLICE_NODE_" + Math.floor(Math.random() * 1000);
     const ws = new WebSocket(`ws://localhost:8000/ws/${clientId}`);
 
@@ -74,22 +99,35 @@ const Dashboard = () => {
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
               <span className="text-[10px] font-bold text-slate-400">NODE: DELHI_CENTRAL</span>
             </div>
-            <button className="bg-accent-blue hover:bg-blue-600 px-6 py-2 rounded-xl text-sm font-bold transition-all shadow-lg shadow-blue-500/20">
-              AUDIT NEW CASE
+            <button className="bg-accent-blue hover:bg-blue-600 px-6 py-2 rounded-xl text-sm font-bold transition-all shadow-lg shadow-blue-500/20 flex items-center gap-2">
+              <Download size={16} />
+              EXPORT INTELLIGENCE PACKAGE
             </button>
           </div>
         </header>
 
         {/* Dashboard Grid */}
         <div className="grid grid-cols-12 gap-8">
-          {/* Main Forensic View */}
-          <div className="col-span-12 lg:col-span-4 space-y-8">
+          {/* Main Forensic Core & History */}
+          <div className="col-span-12 lg:col-span-3 space-y-8">
             <RiskMeter score={caseData.score} stage={caseData.stage} />
-            <ForensicSignals signals={caseData.signals} />
+            <div className="h-[400px]">
+              <CaseHistory cases={caseData.history} onSelect={(c) => setCaseData(prev => ({...prev, score: c.risk_score, stage: c.stage, findings: c.legal_citations}))} />
+            </div>
           </div>
 
-          {/* Legal Audit & Evidence */}
-          <div className="col-span-12 lg:col-span-8 space-y-8">
+          {/* Intelligence Visualizers */}
+          <div className="col-span-12 lg:col-span-5 space-y-8">
+            <div className="h-[350px]">
+              <CrimeMap />
+            </div>
+            <div className="h-[350px]">
+              <FraudNetwork />
+            </div>
+          </div>
+
+          {/* Legal & Intervention Logs */}
+          <div className="col-span-12 lg:col-span-4 space-y-8">
             <LegalAudit findings={caseData.findings} />
             <InterventionLog logs={caseData.interventions} />
           </div>

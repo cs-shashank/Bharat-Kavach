@@ -11,4 +11,7 @@ requests
 python-multipart
 rapidfuzz
 sentence-transformers
+sqlalchemy
+python-multipart
+aiosqlite
 
