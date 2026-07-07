@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pydantic
+langchain
+langchain-google-genai
+python-dotenv
+opencv-python
+numpy
+whisper-timestamped
+requests
+python-multipart
