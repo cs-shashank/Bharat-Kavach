@@ -24,5 +24,7 @@ The platform uses **Behavioral Intelligence** to track the escalation arc of a s
 1. **Legal RAG**: Indexing IPC/BNS documents to cross-reference legal claims.
 2. **Vision Forensics**: Implementing warrant and currency verification.
 3. **Frontend**: Building the Law Enforcement Dashboard.
+4. **Responsible Sourcing**: All forensic test samples are sourced from public scambaiting archives or government advisories. Bharat Kavach does not generate new forged documents for training.
+5. **POC Scope**: Vision/Currency forensics are triaging tools (POC) and not certified for official bank/court declaration.
 
 Refer to the [docs/implementation_plan.md](docs/implementation_plan.md) and [docs/task.md](docs/task.md) for the detailed 10-day roadmap.

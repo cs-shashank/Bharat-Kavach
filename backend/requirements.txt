@@ -9,3 +9,6 @@ numpy
 whisper-timestamped
 requests
 python-multipart
+rapidfuzz
+sentence-transformers
+

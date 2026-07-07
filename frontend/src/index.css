@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0f172a;
+  --color-secondary: #1e293b;
+  --color-accent-blue: #3b82f6;
+  --color-accent-red: #ef4444;
+  --color-accent-gold: #f59e0b;
+  
+  --font-sans: "Inter", "Outfit", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-slate-900/40 backdrop-blur-md border border-slate-800/50 rounded-2xl shadow-xl transition-all duration-300;
+  }
+  
+  .forensic-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+}
+
+/* Custom animations for the forensic dashboard */
+@keyframes pulse-red {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-alert {
+  animation: pulse-red 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

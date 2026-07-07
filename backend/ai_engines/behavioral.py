@@ -1,10 +1,12 @@
 import os
+import json
 from enum import Enum
 from typing import List, Optional
 from pydantic import BaseModel, Field
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import JsonOutputParser
+import google.generativeai as genai
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class ScamStage(Enum):
     NORMAL = "Normal Conversation"
@@ -15,23 +17,19 @@ class ScamStage(Enum):
     DEMAND = "Financial Demand / UPI Request"
 
 class AnalysisResult(BaseModel):
-    current_stage: str = Field(description="The detected stage from the ScamStage enum")
-    confidence: float = Field(description="Confidence score from 0.0 to 1.0")
-    reasoning: str = Field(description="Brief explanation of why this stage was detected")
-    red_flags: List[str] = Field(description="Specific phrases or behaviors that triggered the alert")
-    intervention_required: bool = Field(description="Whether the system should trigger a bank/police hold")
+    current_stage: str
+    confidence: float
+    reasoning: str
+    red_flags: List[str]
+    intervention_required: bool
 
 class BehavioralClassifier:
     def __init__(self, api_key: str):
-        self.llm = ChatGoogleGenerativeAI(
-            model="gemini-1.5-flash",
-            google_api_key=api_key,
-            temperature=0.1
-        )
-        self.parser = JsonOutputParser(pydantic_object=AnalysisResult)
+        genai.configure(api_key=api_key)
+        self.model = genai.GenerativeModel('gemini-1.5-flash')
         
     def analyze_transcript(self, transcript: str) -> AnalysisResult:
-        template = """
+        prompt = f"""
         You are a Forensic Cybercrime Analyst specializing in Indian "Digital Arrest" scams.
         Analyze the following transcript segment and classify it based on the Scam Escalation Arc.
 
@@ -43,26 +41,37 @@ class BehavioralClassifier:
         5. Urgency / Fear Injection: Threatening immediate arrest, social shame, or jail time.
         6. Financial Demand: Asking for a 'security deposit', 'verification fee', or UPI transfer.
 
-        TRANSCRIPT:
-        {transcript}
+        TRANSCRIPT: {transcript}
 
-        {format_instructions}
+        Return a JSON response matching this structure:
+        {{
+          "current_stage": "string",
+          "confidence": float,
+          "reasoning": "string",
+          "red_flags": ["string"],
+          "intervention_required": boolean
+        }}
         """
         
-        prompt = ChatPromptTemplate.from_template(template)
-        chain = prompt | self.llm | self.parser
-        
-        result_dict = chain.invoke({
-            "transcript": transcript,
-            "format_instructions": self.parser.get_format_instructions()
-        })
-        
-        return AnalysisResult(**result_dict)
+        try:
+            response = self.model.generate_content(prompt)
+            text = response.text.strip()
+            if "```json" in text:
+                text = text.split("```json")[1].split("```")[0].strip()
+            elif "```" in text:
+                text = text.split("```")[1].split("```")[0].strip()
+            
+            data = json.loads(text)
+            return AnalysisResult(**data)
+        except Exception as e:
+            print(f"Behavioral Analysis failed: {e}")
+            return AnalysisResult(
+                current_stage="Unknown",
+                confidence=0.0,
+                reasoning=f"Error: {str(e)}",
+                red_flags=[],
+                intervention_required=False
+                )
 
-# Example usage for testing (Mock)
 if __name__ == "__main__":
-    # In production, use os.getenv("GOOGLE_API_KEY")
-    mock_transcript = "Stay on this Skype call. Do not tell your wife or anyone. If you close the camera, CBI will arrest you immediately at your home."
-    # classifier = BehavioralClassifier(api_key="YOUR_KEY")
-    # print(classifier.analyze_transcript(mock_transcript))
     print("BehavioralClassifier initialized.")

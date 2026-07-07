@@ -1,0 +1,42 @@
+[
+  {
+    "id": "digital_arrest_myth_1",
+    "scam_claim_pattern": "police or CBI or ED can arrest you over video call or Skype or WhatsApp",
+    "reality": "No Indian law enforcement agency (Police, CBI, ED, etc.) has the legal authority to arrest a person digitally or over a video call. This is a common fraud tactic.",
+    "relevant_provision": "BNSS Section 43 (Physical Custody Required)",
+    "confidence": "high",
+    "citation_note": "Under Bharatiya Nagarik Suraksha Sanhita (BNSS), arrest requires actual physical touch or confinement of the body unless the person submits to physical custody."
+  },
+  {
+    "id": "public_servant_impersonation_1",
+    "scam_claim_pattern": "I am calling from CBI or ED office regarding your illegal parcel or bank account",
+    "reality": "Law enforcement agencies do not call citizens to threaten them with 'internal investigations' or 'secret warrants' over the phone for financial details.",
+    "relevant_provision": "BNS Section 204 (Impersonating a Public Servant)",
+    "confidence": "high",
+    "citation_note": "Pretending to hold public office or performing acts under color of such office falsely is a criminal offense under Bharatiya Nyaya Sanhita."
+  },
+  {
+    "id": "financial_settlement_myth_1",
+    "scam_claim_pattern": "Pay a security deposit or compliance fee or fine via UPI to avoid arrest or close the case",
+    "reality": "Official legal fines or bail bonds are never collected via UPI or private bank transfers during a phone call. Demand for money to 'settle' a criminal case is extortion.",
+    "relevant_provision": "BNS Section 308 (Extortion) & BNS Section 318 (Cheating)",
+    "confidence": "high",
+    "citation_note": "Legal proceedings follow a formal summons and court process. Immediate payment via UPI is a hallmark of fraud."
+  },
+  {
+    "id": "digital_confinement_myth_1",
+    "scam_claim_pattern": "Do not disconnect or talk to family or inform anyone or you will be arrested",
+    "reality": "There is no legal concept of 'Digital Confinement'. It is a psychological tactic used by scammers to isolate victims from support.",
+    "relevant_provision": "Informational — No statutory basis",
+    "confidence": "high",
+    "citation_note": "Agencies must follow BNSS protocols which include the right to inform relatives and consult legal counsel upon arrest."
+  },
+  {
+    "id": "fake_warrant_myth_1",
+    "scam_claim_pattern": "Sending you a warrant on WhatsApp or email for signature",
+    "reality": "Warrants and summons are official documents served by police personnel in person or through authorized post. WhatsApp is not an official medium for serving arrest warrants.",
+    "relevant_provision": "BNS Section 336 (Forgery)",
+    "confidence": "high",
+    "citation_note": "Falsifying digital documents or using fake government seals is punishable forgery under BNS."
+  }
+]
