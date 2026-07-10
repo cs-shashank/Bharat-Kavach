@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Share2, Smartphone, Landmark, UserX } from 'lucide-react';
+import { Share2, Smartphone, UserX } from 'lucide-react';
+
+// ─── Sub-components ──────────────────────────────────────────────────────────
 
 const Node = ({ x, y, icon: Icon, label, color, delay }) => (
   <motion.g
@@ -12,7 +14,13 @@ const Node = ({ x, y, icon: Icon, label, color, delay }) => (
     <foreignObject x={x - 12} y={y - 12} width="24" height="24">
       <Icon size={24} color={color} />
     </foreignObject>
-    <text x={x} y={y + 45} textAnchor="middle" fill="#94a3b8" className="text-[10px] font-bold uppercase tracking-tighter">
+    <text
+      x={x}
+      y={y + 45}
+      textAnchor="middle"
+      fill="#94a3b8"
+      className="text-[10px] font-bold uppercase tracking-tighter"
+    >
       {label}
     </text>
   </motion.g>
@@ -32,41 +40,157 @@ const Connection = ({ x1, y1, x2, y2, delay }) => (
   />
 );
 
-const FraudNetwork = () => {
+// ─── Network derivation ───────────────────────────────────────────────────────
+
+const PHONE_REGEX = /[6-9]\d{9}/g;
+
+export function deriveNetwork(cases) {
+  const highRisk = cases.filter(c => c.risk_score > 70);
+  if (highRisk.length === 0) return null;
+
+  // Primary Suspect: highest timestamp, tiebreak by largest id
+  const primary = highRisk.reduce((best, c) => {
+    const tBest = new Date(best.timestamp).getTime();
+    const tC = new Date(c.timestamp).getTime();
+    if (tC > tBest) return c;
+    if (tC === tBest) return c.id > best.id ? c : best;
+    return best;
+  });
+
+  // Scan ALL cases' transcripts for phone numbers
+  const phoneSet = new Set();
+  const contributingIds = new Set([primary.id]);
+
+  cases.forEach(c => {
+    const matches = (c.transcript || '').match(PHONE_REGEX) || [];
+    if (matches.length > 0) contributingIds.add(c.id);
+    matches.forEach(p => phoneSet.add(p));
+  });
+
+  return {
+    primary,
+    phones: [...phoneSet],
+    linkedCount: contributingIds.size,
+  };
+}
+
+// ─── Main component ───────────────────────────────────────────────────────────
+
+const FraudNetwork = ({ cases, fetchError }) => {
+  // fetchError prop or undefined/null cases → "Network data unavailable"
+  if (fetchError || cases == null) {
+    return (
+      <div className="glass-card p-6 h-full flex flex-col items-center">
+        <Header badge="NETWORK DATA UNAVAILABLE" />
+        <EmptyMessage text="Network data unavailable" />
+        <AnalyticInsight />
+      </div>
+    );
+  }
+
+  const network = deriveNetwork(cases);
+
+  // No high-risk cases found
+  if (network === null) {
+    return (
+      <div className="glass-card p-6 h-full flex flex-col items-center">
+        <Header badge="0 CASES LINKED" />
+        <EmptyMessage text="No high-risk cases detected" />
+        <AnalyticInsight />
+      </div>
+    );
+  }
+
+  const { primary, phones, linkedCount } = network;
+
+  // SVG layout constants
+  const CX = 200;
+  const CY = 150;
+  const RADIUS = 90;
+
+  const phoneNodes = phones.map((phone, i) => {
+    const angle = phones.length === 1
+      ? -Math.PI / 2                          // single node sits directly above
+      : (2 * Math.PI * i) / phones.length - Math.PI / 2;
+    return {
+      phone,
+      x: CX + RADIUS * Math.cos(angle),
+      y: CY + RADIUS * Math.sin(angle),
+    };
+  });
+
   return (
     <div className="glass-card p-6 h-full flex flex-col items-center">
-      <div className="w-full flex justify-between items-center mb-6">
-        <div className="flex items-center gap-2">
-          <Share2 size={16} className="text-accent-blue" />
-          <h3 className="text-xs font-bold text-slate-500 tracking-widest uppercase">Fraud Network Graph AI</h3>
-        </div>
-        <span className="text-[10px] font-bold bg-blue-500/10 text-blue-500 px-2 py-0.5 rounded border border-blue-500/20">
-          CLUSTERING ACTIVE
-        </span>
-      </div>
+      <Header badge={`${linkedCount} CASES LINKED`} />
 
       <svg width="400" height="300" className="w-full h-full min-h-[250px]">
-        {/* Connections */}
-        <Connection x1="200" y1="150" x2="100" y2="80" delay={0.5} />
-        <Connection x1="200" y1="150" x2="300" y2="80" delay={0.7} />
-        <Connection x1="100" y1="80" x2="50" y2="200" delay={0.9} />
-        <Connection x1="300" y1="80" x2="350" y2="200" delay={1.1} />
-        <Connection x1="200" y1="150" x2="200" y2="250" delay={1.3} />
+        {/* Edges first so nodes render on top */}
+        {phoneNodes.map(({ phone, x, y }, i) => (
+          <Connection
+            key={`edge-${phone}`}
+            x1={CX}
+            y1={CY}
+            x2={x}
+            y2={y}
+            delay={0.4 + i * 0.15}
+          />
+        ))}
 
-        {/* Nodes */}
-        <Node x={200} y={150} icon={UserX} label="Primary Suspect" color="#ef4444" delay={0.2} />
-        <Node x={100} y={80} icon={Smartphone} label="+91-98XXX" color="#3b82f6" delay={0.4} />
-        <Node x={300} y={80} icon={Smartphone} label="+91-87XXX" color="#3b82f6" delay={0.6} />
-        <Node x={50} y={200} icon={Landmark} label="Mule_Acct_1" color="#f59e0b" delay={0.8} />
-        <Node x={350} y={200} icon={Landmark} label="Mule_Acct_2" color="#f59e0b" delay={1.0} />
-        <Node x={200} y={250} icon={Smartphone} label="Spoof_App_X" color="#94a3b8" delay={1.2} />
+        {/* Primary Suspect node */}
+        <Node
+          x={CX}
+          y={CY}
+          icon={UserX}
+          label={primary.user_id || 'Unknown'}
+          color="#ef4444"
+          delay={0.2}
+        />
+
+        {/* Phone nodes */}
+        {phoneNodes.map(({ phone, x, y }, i) => (
+          <Node
+            key={`node-${phone}`}
+            x={x}
+            y={y}
+            icon={Smartphone}
+            label={phone}
+            color="#3b82f6"
+            delay={0.5 + i * 0.15}
+          />
+        ))}
       </svg>
 
-      <div className="w-full mt-4 p-3 bg-blue-500/5 rounded-xl border border-blue-500/10 text-[10px] text-slate-400 font-medium italic">
-        "Analytic Insight: Cluster linked to 'Cambodia-based' fraud compound. Coordinated timing with 12 other victim reports."
-      </div>
+      <AnalyticInsight />
     </div>
   );
 };
+
+// ─── Shared layout helpers ────────────────────────────────────────────────────
+
+const Header = ({ badge }) => (
+  <div className="w-full flex justify-between items-center mb-6">
+    <div className="flex items-center gap-2">
+      <Share2 size={16} className="text-accent-blue" />
+      <h3 className="text-xs font-bold text-slate-500 tracking-widest uppercase">
+        Fraud Network Graph AI
+      </h3>
+    </div>
+    <span className="text-[10px] font-bold bg-blue-500/10 text-blue-500 px-2 py-0.5 rounded border border-blue-500/20">
+      {badge}
+    </span>
+  </div>
+);
+
+const EmptyMessage = ({ text }) => (
+  <div className="flex-1 flex items-center justify-center">
+    <p className="text-slate-500 text-sm font-medium">{text}</p>
+  </div>
+);
+
+const AnalyticInsight = () => (
+  <div className="w-full mt-4 p-3 bg-blue-500/5 rounded-xl border border-blue-500/10 text-[10px] text-slate-400 font-medium italic">
+    "Analytic Insight: Cluster linked to 'Cambodia-based' fraud compound. Coordinated timing with 12 other victim reports."
+  </div>
+);
 
 export default FraudNetwork;

@@ -1,4 +1,4 @@
-from sqlalchemy import create_dotenv, create_engine, Column, Integer, String, Float, DateTime, Boolean, JSON
+from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime, Boolean, JSON, text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import datetime
@@ -24,6 +24,7 @@ class CaseReport(Base):
     verdict = Column(String)
     legal_citations = Column(JSON)
     interventions = Column(JSON)
+    city = Column(String, nullable=True)
     timestamp = Column(DateTime, default=datetime.datetime.utcnow)
 
 class ForensicDocument(Base):
@@ -38,6 +39,14 @@ class ForensicDocument(Base):
 
 # Create tables
 Base.metadata.create_all(bind=engine)
+
+# Startup migration guard: add city column if it doesn't exist yet
+try:
+    with engine.connect() as conn:
+        conn.execute(text("ALTER TABLE case_reports ADD COLUMN city VARCHAR"))
+        conn.commit()
+except Exception:
+    pass  # Column already exists
 
 def get_db():
     db = SessionLocal()

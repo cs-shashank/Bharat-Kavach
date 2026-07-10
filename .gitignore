@@ -12,3 +12,11 @@ dist/
 .idea/
 .vscode/
 node_modules/
+
+# Hypothesis test cache
+.hypothesis/
+backend/.hypothesis/
+
+# SQLite databases
+*.db
+
