@@ -6,10 +6,20 @@ import InterventionLog from '../forensics/InterventionLog';
 import FraudNetwork from '../forensics/FraudNetwork';
 import CrimeMap from '../forensics/CrimeMap';
 import CaseHistory from './CaseHistory';
-import { Shield, Activity, Users, Map as MapIcon, Bell, Download, ShieldAlert } from 'lucide-react';
+import TranscriptPanel from './TranscriptPanel';
+import DocumentPanel from './DocumentPanel';
+import CurrencyPanel from './CurrencyPanel';
+import { Shield, Activity, Users, MapIcon, Bell, Download, ShieldAlert, AlertTriangle } from 'lucide-react';
+
+// Exported for testing — returns true if any finding has verdict === "confirmed_false"
+export function hasFalseFindings(findings) {
+  return Array.isArray(findings) && findings.some(f => f.verdict === 'confirmed_false');
+}
 
 const Dashboard = () => {
   const [caseData, setCaseData] = useState({
+    id: null,
+    transcript: "",
     score: 0,
     stage: 'Awaiting Stream',
     signals: { behavioral: 0, legal: 100, vision: 100, protocol: 100 },
@@ -17,6 +27,8 @@ const Dashboard = () => {
     interventions: [],
     history: []
   });
+
+  const [toast, setToast] = useState(null);
 
   // On Mount: Fetch historical cases
   useEffect(() => {
@@ -47,14 +59,38 @@ const Dashboard = () => {
     ws.onmessage = (event) => {
       const message = JSON.parse(event.data);
       if (message.type === 'FORENSIC_UPDATE') {
+        const findings = message.data.findings;
         setCaseData(prev => ({
           ...prev,
+          id: message.data.id ?? prev.id,
           score: message.data.score,
           stage: message.data.stage,
-          findings: message.data.findings,
+          findings,
+          signals: {
+            behavioral: message.data.score,
+            legal: hasFalseFindings(findings) ? 0 : 100,
+            vision: prev.signals.vision,
+            protocol: prev.signals.protocol,
+          },
+        }));
+        // Re-fetch cases to refresh history for FraudNetwork and CrimeMap
+        fetch('http://localhost:8000/cases')
+          .then(r => r.json())
+          .then(data => setCaseData(prev => ({ ...prev, history: data })))
+          .catch(err => console.error("Failed to refresh cases:", err));
+      } else if (message.type === 'KILL_SWITCH_TRIGGERED') {
+        setCaseData(prev => ({
+          ...prev,
           interventions: [
             ...prev.interventions,
-            { type: 'FINANCIAL', action: 'UPI_HOLD', details: 'Transaction 9823X flagged for Digital Arrest pattern.', timestamp: '14:22:11' }
+            {
+              type: 'FINANCIAL',
+              action: message.data.actions_taken[0],
+              details: message.data.incident_id,
+              timestamp: message.data.timestamp,
+              incident_id: message.data.incident_id,
+              actions_taken: message.data.actions_taken,
+            }
           ]
         }));
       }
@@ -62,6 +98,41 @@ const Dashboard = () => {
 
     return () => ws.close();
   }, []);
+
+  const handleExport = () => {
+    if (caseData.score === 0) {
+      setToast("No active case to export. Analyze a transcript first.");
+      setTimeout(() => setToast(null), 3000);
+      return;
+    }
+    const now = new Date();
+    const ts = now.toISOString().replace(/[-:]/g, "").split(".")[0];
+    const caseId = caseData.id ?? "UNKNOWN";
+    const pkg = {
+      case_id: caseId,
+      transcript: caseData.transcript ?? "",
+      risk_score: caseData.score,
+      stage: caseData.stage,
+      legal_findings: caseData.findings ?? [],
+      interventions: caseData.interventions ?? [],
+      exported_at: now.toISOString(),
+    };
+    const withIncident = (caseData.interventions ?? []).find(i => i.incident_id);
+    if (withIncident) {
+      pkg.intervention_result = {
+        actions_taken: withIncident.actions_taken ?? [],
+        incident_id: withIncident.incident_id,
+        triggered_at: withIncident.timestamp ?? now.toISOString(),
+      };
+    }
+    const blob = new Blob([JSON.stringify(pkg, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `bharat-kavach-case-${caseId}-${ts}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
 
   return (
     <div className="flex bg-slate-950 min-h-screen">
@@ -72,7 +143,7 @@ const Dashboard = () => {
         </div>
         <div className="flex flex-col gap-6 text-slate-500">
           <Activity size={20} className="hover:text-white cursor-pointer" />
-          <Map size={20} className="hover:text-white cursor-pointer" />
+          <MapIcon size={20} className="hover:text-white cursor-pointer" />
           <Users size={20} className="hover:text-white cursor-pointer" />
         </div>
         <div className="mt-auto">
@@ -99,7 +170,7 @@ const Dashboard = () => {
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
               <span className="text-[10px] font-bold text-slate-400">NODE: DELHI_CENTRAL</span>
             </div>
-            <button className="bg-accent-blue hover:bg-blue-600 px-6 py-2 rounded-xl text-sm font-bold transition-all shadow-lg shadow-blue-500/20 flex items-center gap-2">
+            <button onClick={handleExport} className="bg-accent-blue hover:bg-blue-600 px-6 py-2 rounded-xl text-sm font-bold transition-all shadow-lg shadow-blue-500/20 flex items-center gap-2">
               <Download size={16} />
               EXPORT INTELLIGENCE PACKAGE
             </button>
@@ -111,6 +182,7 @@ const Dashboard = () => {
           {/* Main Forensic Core & History */}
           <div className="col-span-12 lg:col-span-3 space-y-8">
             <RiskMeter score={caseData.score} stage={caseData.stage} />
+            <ForensicSignals signals={caseData.signals} />
             <div className="h-[400px]">
               <CaseHistory cases={caseData.history} onSelect={(c) => setCaseData(prev => ({...prev, score: c.risk_score, stage: c.stage, findings: c.legal_citations}))} />
             </div>
@@ -118,12 +190,18 @@ const Dashboard = () => {
 
           {/* Intelligence Visualizers */}
           <div className="col-span-12 lg:col-span-5 space-y-8">
+            <TranscriptPanel
+              onResult={(data) => setCaseData(prev => ({ ...prev, id: data.id ?? prev.id, transcript: prev.transcript }))}
+              onSubmit={(text) => setCaseData(prev => ({ ...prev, transcript: text }))}
+            />
             <div className="h-[350px]">
-              <CrimeMap />
+              <CrimeMap cases={caseData.history} />
             </div>
             <div className="h-[350px]">
-              <FraudNetwork />
+              <FraudNetwork cases={caseData.history} />
             </div>
+            <DocumentPanel />
+            <CurrencyPanel />
           </div>
 
           {/* Legal & Intervention Logs */}
@@ -150,14 +228,14 @@ const Dashboard = () => {
             </div>
           </div>
         )}
+        {toast && (
+          <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-slate-800 border border-slate-700 text-slate-200 text-sm font-medium px-6 py-3 rounded-xl shadow-xl">
+            {toast}
+          </div>
+        )}
       </main>
     </div>
   );
 };
-
-// Mock Alert icon wrapper
-const AlertTriangle = (props) => (
-  <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
-);
 
 export default Dashboard;
