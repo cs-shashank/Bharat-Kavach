@@ -1,0 +1,47 @@
+{
+  "bundle_id": "e5c6e652-e0f4-4a6e-8239-cff43cba965e",
+  "analyzed_at": "2026-01-15T10:30:00Z",
+  "case_id": 42,
+  "sha256_hash": "fce3f03cb606afbf69f8327999e6803eae910c3dacc2bcfe7d94f73951f65c63",
+  "model_registry": {
+    "BehavioralClassifier": "gemini-flash-lite",
+    "LegalRAG": "gemini-flash-lite",
+    "VisionForensics": "not_applicable",
+    "CurrencyVerifier": "opencv-roi-v1"
+  },
+  "chain_of_custody": [
+    {
+      "step": 1,
+      "component": "BehavioralClassifier",
+      "artifact_type": "transcript",
+      "action": "analysis completed",
+      "timestamp": "2026-01-15T10:30:01Z"
+    }
+  ],
+  "component_verdicts": {
+    "BehavioralClassifier": {
+      "verdict": "Financial Demand / UPI Request",
+      "confidence": 0.91,
+      "details": {
+        "stage": "test"
+      }
+    },
+    "LegalRAG": {
+      "verdict": "confirmed_false",
+      "confidence": 1.0,
+      "details": {
+        "myths": 2
+      }
+    },
+    "VisionForensics": {
+      "verdict": "not_applicable",
+      "confidence": null,
+      "details": null
+    },
+    "CurrencyVerifier": {
+      "verdict": "not_applicable",
+      "confidence": null,
+      "details": null
+    }
+  }
+}
