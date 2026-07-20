@@ -2,6 +2,7 @@ import os
 import logging
 import datetime
 from fastapi import FastAPI, HTTPException, File, UploadFile, WebSocket, WebSocketDisconnect
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 import json
 from typing import List, Optional, Dict
@@ -14,6 +15,7 @@ from ai_engines.legal_rag import LegalRAG
 from ai_engines.vision import VisionForensics
 from ai_engines.currency import CurrencyVerifier
 from services.intervention import InterventionService
+from services.evidence_exporter import EvidenceExporter, EvidenceBundle
 from database import get_db, CaseReport, ForensicDocument
 from sqlalchemy.orm import Session
 from fastapi import Depends
@@ -24,6 +26,9 @@ load_dotenv()
 app = FastAPI(title="Bharat Kavach API", version="1.0.0")
 
 logger = logging.getLogger("bharat_kavach")
+
+# Evidence exporter (Phase 1)
+exporter = EvidenceExporter()
 
 # WebSocket Connection Manager
 class ConnectionManager:
@@ -239,6 +244,70 @@ async def get_metrics():
         return metrics
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"{type(e).__name__}: {str(e)}")
+
+# ---------------------------------------------------------------------------
+# Phase 1 — Evidence export endpoints
+# ---------------------------------------------------------------------------
+
+@app.get("/cases/{case_id}/evidence")
+async def get_case_evidence(case_id: int, db: Session = Depends(get_db)):
+    """
+    Return the full EvidenceBundle JSON for a case, plus a pdf_url download link.
+    Idempotent: serves the cached bundle if it already exists on disk.
+    """
+    case = db.query(CaseReport).filter(CaseReport.id == case_id).first()
+    if not case:
+        raise HTTPException(status_code=404, detail="Case not found")
+
+    try:
+        bundle = exporter.get_or_create_bundle(case)
+    except Exception as exc:
+        logger.exception("Evidence bundle generation failed for case %s", case_id)
+        raise HTTPException(status_code=500, detail=f"Evidence generation failed: {str(exc)}")
+
+    bundle_dict = bundle.model_dump()
+    bundle_dict["pdf_url"] = f"/cases/{case_id}/evidence/download"
+    return bundle_dict
+
+
+@app.get("/cases/{case_id}/evidence/download")
+async def download_case_evidence_pdf(case_id: int, db: Session = Depends(get_db)):
+    """
+    Stream the PDF summary for a case as a downloadable attachment.
+    """
+    case = db.query(CaseReport).filter(CaseReport.id == case_id).first()
+    if not case:
+        raise HTTPException(status_code=404, detail="Case not found")
+
+    # Resolve bundle_id — try to read from cached JSON first
+    bundle_id = getattr(case, "bundle_id", None)
+    if not bundle_id:
+        # Try to get_or_create to populate bundle_id
+        try:
+            bundle = exporter.get_or_create_bundle(case)
+            bundle_id = bundle.bundle_id
+        except Exception as exc:
+            raise HTTPException(status_code=500, detail=f"Evidence generation failed: {str(exc)}")
+
+    pdf_path = exporter.get_pdf_path(bundle_id)
+    if not pdf_path.exists():
+        # Attempt to generate
+        try:
+            bundle = exporter.get_or_create_bundle(case)
+            pdf_path = exporter.get_pdf_path(bundle.bundle_id)
+        except Exception as exc:
+            raise HTTPException(status_code=500, detail=f"PDF generation failed: {str(exc)}")
+
+    if not pdf_path.exists():
+        raise HTTPException(status_code=404, detail="PDF not yet generated for this case")
+
+    return FileResponse(
+        path=str(pdf_path),
+        media_type="application/pdf",
+        filename=pdf_path.name,
+        headers={"Content-Disposition": f"attachment; filename={pdf_path.name}"},
+    )
+
 
 if __name__ == "__main__":
     import uvicorn

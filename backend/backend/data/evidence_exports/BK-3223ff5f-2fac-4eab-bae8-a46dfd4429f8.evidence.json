@@ -1,0 +1,35 @@
+{
+  "bundle_id": "3223ff5f-2fac-4eab-bae8-a46dfd4429f8",
+  "analyzed_at": "2026-07-18T12:08:19.646Z",
+  "case_id": 1,
+  "sha256_hash": "15187d523e433d4e447a7abe73b1fa64a6dc1857c5cef1f04881187f06947b65",
+  "model_registry": {
+    "BehavioralClassifier": "unknown",
+    "LegalRAG": "unknown",
+    "VisionForensics": "unknown",
+    "CurrencyVerifier": "unknown"
+  },
+  "chain_of_custody": [],
+  "component_verdicts": {
+    "BehavioralClassifier": {
+      "verdict": "not_applicable",
+      "confidence": null,
+      "details": null
+    },
+    "LegalRAG": {
+      "verdict": "not_applicable",
+      "confidence": null,
+      "details": null
+    },
+    "VisionForensics": {
+      "verdict": "not_applicable",
+      "confidence": null,
+      "details": null
+    },
+    "CurrencyVerifier": {
+      "verdict": "not_applicable",
+      "confidence": null,
+      "details": null
+    }
+  }
+}
