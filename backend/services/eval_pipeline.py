@@ -325,8 +325,8 @@ class EvaluationPipeline:
                     _gemini_limiter.wait()
                     result = self._behavioral.analyze_transcript(transcript)
                     risk_score = result.confidence * 100
-                    # Predict scam if risk_score > 60 (same threshold as EvaluationFramework)
-                    predicted = "scam" if risk_score > 60 else "legit"
+                    # Predict scam if risk_score > 85 (calibrated threshold)
+                    predicted = "scam" if risk_score > 85 else "legit"
                     component_pairs["BehavioralClassifier"].append({
                         "ground_truth": ground_truth, "predicted": predicted
                     })

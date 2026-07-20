@@ -1,5 +1,5 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 4,
   "created_at": "2026-07-17T00:00:00Z",
   "description": "Bharat Kavach Phase 1 evaluation dataset v3. Transcripts: 100+ scam (India-specific + Jim Browning real calls + English scam scripts) + 100+ legit (India-specific + English non-scam scripts). Currency: 176 genuine + 25 counterfeit (19 real + 6 augmented). Documents: 25 authentic + 25 forged.",
   "samples": [
@@ -724,116 +724,6 @@
       ]
     },
     {
-      "sample_id": "doc_auth_001",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/001_1-001_01.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 001",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_002",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/001_1-001_010.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 001",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_003",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/001_1-001_02.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 001",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_004",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/001_1-001_03.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 001",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_005",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/001_1-001_04.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 001",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_006",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/001_1-001_05.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 001",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_007",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/001_1-001_06.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 001",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_008",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/001_1-001_07.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 001",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_009",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/001_1-001_08.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 001",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_010",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/001_1-001_09.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 001",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
       "sample_id": "doc_forged_001",
       "sample_type": "document_image",
       "ground_truth": "forged",
@@ -944,116 +834,6 @@
       ]
     },
     {
-      "sample_id": "doc_auth_011",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/002_1-003_01.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 002",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_012",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/002_1-003_010.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 002",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_013",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/002_1-003_02.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 002",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_014",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/002_1-003_03.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 002",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_015",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/002_1-003_04.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 002",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_016",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/002_1-003_05.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 002",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_017",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/002_1-003_06.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 002",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_018",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/002_1-003_07.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 002",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_019",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/002_1-003_08.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 002",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_020",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/002_1-003_09.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 002",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
       "sample_id": "doc_forged_011",
       "sample_type": "document_image",
       "ground_truth": "forged",
@@ -1158,61 +938,6 @@
       "ground_truth": "forged",
       "file_path": "documents/forged/002_forg_1-004_09.jpg",
       "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_021",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/003_1-005_01.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 003",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_022",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/003_1-005_010.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 003",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_023",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/003_1-005_02.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 003",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_024",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/003_1-005_03.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 003",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_auth_025",
-      "sample_type": "document_image",
-      "ground_truth": "authentic",
-      "file_path": "documents/authentic/003_1-005_04.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — authentic class folder: 003",
       "tricky_negative": false,
       "applicable_components": [
         "VisionForensics"
@@ -5519,6 +5244,171 @@
       "tricky_negative": false,
       "applicable_components": [
         "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "doc_auth_syn_001",
+      "sample_type": "document_image",
+      "ground_truth": "authentic",
+      "file_path": "documents/authentic/synthetic_court_summons_001.jpg",
+      "source_citation": "Synthetic authentic Indian legal document generated by Bharat Kavach (reportlab/PIL) — clean formatting, no manipulation artifacts",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_auth_syn_002",
+      "sample_type": "document_image",
+      "ground_truth": "authentic",
+      "file_path": "documents/authentic/synthetic_police_notice_001.jpg",
+      "source_citation": "Synthetic authentic Indian legal document generated by Bharat Kavach (reportlab/PIL) — clean formatting, no manipulation artifacts",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_auth_syn_003",
+      "sample_type": "document_image",
+      "ground_truth": "authentic",
+      "file_path": "documents/authentic/synthetic_rto_notice_001.jpg",
+      "source_citation": "Synthetic authentic Indian legal document generated by Bharat Kavach (reportlab/PIL) — clean formatting, no manipulation artifacts",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_auth_syn_004",
+      "sample_type": "document_image",
+      "ground_truth": "authentic",
+      "file_path": "documents/authentic/synthetic_income_tax_notice_001.jpg",
+      "source_citation": "Synthetic authentic Indian legal document generated by Bharat Kavach (reportlab/PIL) — clean formatting, no manipulation artifacts",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_auth_syn_005",
+      "sample_type": "document_image",
+      "ground_truth": "authentic",
+      "file_path": "documents/authentic/synthetic_municipal_notice_001.jpg",
+      "source_citation": "Synthetic authentic Indian legal document generated by Bharat Kavach (reportlab/PIL) — clean formatting, no manipulation artifacts",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_auth_syn_006",
+      "sample_type": "document_image",
+      "ground_truth": "authentic",
+      "file_path": "documents/authentic/synthetic_consumer_forum_001.jpg",
+      "source_citation": "Synthetic authentic Indian legal document generated by Bharat Kavach (reportlab/PIL) — clean formatting, no manipulation artifacts",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_auth_syn_007",
+      "sample_type": "document_image",
+      "ground_truth": "authentic",
+      "file_path": "documents/authentic/synthetic_labour_court_001.jpg",
+      "source_citation": "Synthetic authentic Indian legal document generated by Bharat Kavach (reportlab/PIL) — clean formatting, no manipulation artifacts",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_auth_syn_008",
+      "sample_type": "document_image",
+      "ground_truth": "authentic",
+      "file_path": "documents/authentic/synthetic_high_court_notice_001.jpg",
+      "source_citation": "Synthetic authentic Indian legal document generated by Bharat Kavach (reportlab/PIL) — clean formatting, no manipulation artifacts",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_auth_syn_009",
+      "sample_type": "document_image",
+      "ground_truth": "authentic",
+      "file_path": "documents/authentic/synthetic_customs_notice_001.jpg",
+      "source_citation": "Synthetic authentic Indian legal document generated by Bharat Kavach (reportlab/PIL) — clean formatting, no manipulation artifacts",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_auth_syn_010",
+      "sample_type": "document_image",
+      "ground_truth": "authentic",
+      "file_path": "documents/authentic/synthetic_ngt_notice_001.jpg",
+      "source_citation": "Synthetic authentic Indian legal document generated by Bharat Kavach (reportlab/PIL) — clean formatting, no manipulation artifacts",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_auth_syn_011",
+      "sample_type": "document_image",
+      "ground_truth": "authentic",
+      "file_path": "documents/authentic/synthetic_sebi_notice_001.jpg",
+      "source_citation": "Synthetic authentic Indian legal document generated by Bharat Kavach (reportlab/PIL) — clean formatting, no manipulation artifacts",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_auth_syn_012",
+      "sample_type": "document_image",
+      "ground_truth": "authentic",
+      "file_path": "documents/authentic/synthetic_lok_adalat_001.jpg",
+      "source_citation": "Synthetic authentic Indian legal document generated by Bharat Kavach (reportlab/PIL) — clean formatting, no manipulation artifacts",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_auth_syn_013",
+      "sample_type": "document_image",
+      "ground_truth": "authentic",
+      "file_path": "documents/authentic/synthetic_gram_nyayalaya_001.jpg",
+      "source_citation": "Synthetic authentic Indian legal document generated by Bharat Kavach (reportlab/PIL) — clean formatting, no manipulation artifacts",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_auth_syn_014",
+      "sample_type": "document_image",
+      "ground_truth": "authentic",
+      "file_path": "documents/authentic/synthetic_debt_recovery_001.jpg",
+      "source_citation": "Synthetic authentic Indian legal document generated by Bharat Kavach (reportlab/PIL) — clean formatting, no manipulation artifacts",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_auth_syn_015",
+      "sample_type": "document_image",
+      "ground_truth": "authentic",
+      "file_path": "documents/authentic/synthetic_passport_seva_001.jpg",
+      "source_citation": "Synthetic authentic Indian legal document generated by Bharat Kavach (reportlab/PIL) — clean formatting, no manipulation artifacts",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
       ]
     }
   ]

@@ -92,9 +92,28 @@ class BehavioralClassifier:
 You are a Forensic Cybercrime Analyst specialising in Indian "Digital Arrest" scams.
 Analyse the transcript and classify it against the Scam Escalation Arc.
 
+CRITICAL RULES — READ CAREFULLY:
+A call is ONLY a scam if it contains AT LEAST ONE of:
+  (a) Threats of arrest, legal action, FIR, warrant directed AT THE LISTENER
+  (b) Demands for immediate money transfer, UPI payment, or security deposit
+  (c) Instructions to stay on video call and NOT tell family members
+  (d) Impersonation of CBI/ED/Police/RBI/TRAI with threatening intent
+
+NOT A SCAM — these must score confidence < 0.3:
+  - Routine bank service calls (loan offers, FD renewal, credit limit)
+  - OTP delivery messages
+  - Delivery confirmation calls (Amazon, Swiggy, courier)
+  - Personal conversations between friends/family
+  - Hospital appointment reminders
+  - Government welfare notifications (PM-KISAN, IT refund)
+  - Telecom service/support calls
+  - Court clerk scheduling calls (non-threatening)
+  - Police callbacks about complaints filed BY the listener (non-threatening)
+  - News anchors discussing cases (not directed at listener)
+
 SCAM STAGES:
 1. Normal Conversation       — Casual talk, no threats.
-2. Authority Impersonation   — Caller claims to be CBI / Police / Customs / RBI / NCB.
+2. Authority Impersonation   — Caller THREATENS with CBI/Police/Customs/RBI/NCB claims.
 3. Digital Confinement       — Victim told to stay on video call, not tell family, stay alone.
 4. Fabricated Evidence       — Claims of illegal parcels, drugs, Aadhaar misuse, money laundering.
 5. Urgency / Fear Injection  — Immediate arrest threats, social shame, jail time.
@@ -105,10 +124,10 @@ TRANSCRIPT:
 
 Return strictly valid JSON with these exact fields:
 - current_stage (string): one of the six stage names above
-- confidence (float 0.0–1.0): your certainty
+- confidence (float 0.0–1.0): your certainty that this is a SCAM (0.0 = definitely legit, 1.0 = definitely scam)
 - reasoning (string): 1-2 sentence explanation
-- red_flags (array of strings): specific phrases that triggered classification
-- intervention_required (boolean): true if stage is Financial Demand or Urgency
+- red_flags (array of strings): specific threatening phrases that triggered classification (empty array if legit)
+- intervention_required (boolean): true only if stage is Financial Demand or Urgency
 """
         # Response schema for structured output — guarantees valid JSON
         response_schema = {
