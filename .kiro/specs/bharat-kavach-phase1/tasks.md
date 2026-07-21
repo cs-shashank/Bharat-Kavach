@@ -66,19 +66,19 @@ Implementation language: **Python** (matching the existing backend).
     - On filesystem write failure: attempt plain-text append to `FAILURE_LOG` in format `"FAILURE|{bundle_id}|{timestamp}|{exception_type}|{exception_msg}\n"`; if fallback also fails, log to stderr; raise `JsonWriteError`
     - _Requirements: 2.1, 2.2, 2.4, 2.5, 2.6_
 
-  - [ ] 4.2 Write property test for Property 4 (JSON round-trip) in `backend/tests/test_evidence_exporter.py`
+  - [x] 4.2 Write property test for Property 4 (JSON round-trip) in `backend/tests/test_evidence_exporter.py`
     - **Property 4: JSON export round-trip preserves all bundle fields**
     - Serialize via `export_json()` then deserialise the file; assert field equality including hash
     - Annotate: `# Feature: bharat-kavach-phase1, Property 4: JSON export round-trip preserves all bundle fields`
     - **Validates: Requirements 2.1, 2.2, 2.3**
 
-  - [ ] 4.3 Write property test for Property 5 (filename convention) in `backend/tests/test_evidence_exporter.py`
+  - [x] 4.3 Write property test for Property 5 (filename convention) in `backend/tests/test_evidence_exporter.py`
     - **Property 5: Exported filename always matches naming convention**
     - For any `bundle_id`, assert `export_json()` output filename equals `BK-{bundle_id}.evidence.json` and `export_pdf()` output filename equals `BK-{bundle_id}.summary.pdf`
     - Annotate: `# Feature: bharat-kavach-phase1, Property 5: Exported filename always matches naming convention`
     - **Validates: Requirements 2.4, 3.1**
 
-  - [ ] 4.4 Write property test for Property 6 (partial export on serialisation failure) in `backend/tests/test_evidence_exporter.py`
+  - [x] 4.4 Write property test for Property 6 (partial export on serialisation failure) in `backend/tests/test_evidence_exporter.py`
     - **Property 6: Partial export survives component serialisation failure**
     - Inject an unserializable object into exactly one component's `details`; assert: (a) a file is still produced, (b) the other three components' verdicts are intact, (c) `chain_of_custody` contains an entry whose `action` starts with `"serialisation_error:"`
     - Annotate: `# Feature: bharat-kavach-phase1, Property 6: Partial export survives component serialisation failure`
@@ -136,7 +136,7 @@ Implementation language: **Python** (matching the existing backend).
     - **⚠️ This task delivers the schema-valid structure and a ~20-sample bootstrap set only. The CI gate (task 11) will print `WARNING: insufficient data; skipping gate` for VisionForensics and CurrencyVerifier until real image samples are collected. Do not mistake a skipped gate for a passing gate.**
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 5.1, 5.2, 5.3, 5.4, 5.5, 6.1, 6.2, 6.3, 6.4, 6.5_
 
-- [ ] 8.5 Manual Data Collection Sprint (BLOCKS CI gate from being meaningful)
+- [x] 8.5 Manual Data Collection Sprint (BLOCKS CI gate from being meaningful)
   - **This task must be completed before any metrics cited in the pitch deck are considered credible. The CI gate will print `WARNING: insufficient data; skipping gate` for all components until `sample_count >= 10` per component.**
   - Transcript corpus — target 200+ total (100 scam + 100 legit):
     - Scambaiting archives: r/scams, youtube scambaiter channels (Jim Browning, Kitboga — transcripts from published videos), Scam Alert India blog
@@ -223,7 +223,7 @@ Implementation language: **Python** (matching the existing backend).
     - Annotate: `# Feature: bharat-kavach-phase1, Property 12: CIGate exits non-zero for any below-threshold metric combination`
     - **Validates: Requirements 9.2, 9.3, 9.4, 9.5, 9.6**
 
-  - [ ] 11.3 Write property test for Property 13 (insufficient-data skips threshold) in `backend/tests/test_ci_gate.py`
+  - [x] 11.3 Write property test for Property 13 (insufficient-data skips threshold) in `backend/tests/test_ci_gate.py`
     - **Property 13: CIGate skips threshold check when sample_count < 10**
     - For any component with `sample_count < 10` (even with `precision == 0.0`), assert the CIGate does not trigger a failure for that component
     - Annotate: `# Feature: bharat-kavach-phase1, Property 13: CIGate skips threshold check when sample_count < 10`

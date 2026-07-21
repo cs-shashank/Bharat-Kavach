@@ -238,7 +238,7 @@ backend bug fixes → backend feature additions → new frontend components → 
     - Use `fc.float({min:0,max:100})` for `behavioral` and `legal`; render `ForensicSignals`; assert "Behavioral Arc" bar has `status="Alert"` iff `behavioral > 60`; assert "Legal Grounding" bar has `status="Alert"` iff `legal < 50`
     - Example test: `caseData.score === 0` on export → toast "No active case to export. Analyze a transcript first." shown, no download triggered
 
-- [ ] 14. Final checkpoint — full system integration verified
+- [x] 14. Final checkpoint — full system integration verified
   - Ensure `npm run test` passes all frontend tests (run from `frontend/` with `vitest --run`)
   - Ensure `pytest backend/tests/` passes all backend tests
   - Ensure backend starts without errors in MOCK_MODE (`GOOGLE_API_KEY` unset)

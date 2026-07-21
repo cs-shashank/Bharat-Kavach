@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileSearch, Upload, Loader2, AlertTriangle, ShieldAlert, ShieldCheck } from 'lucide-react';
+import { FileSearch, Upload, Loader2, AlertTriangle, ShieldAlert, ShieldCheck, Clock } from 'lucide-react';
+import { API_BASE } from '../../config.js';
 
 const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png', 'application/pdf'];
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
@@ -10,6 +11,7 @@ const DocumentPanel = () => {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
+  const [rateLimited, setRateLimited] = useState(false);
 
   const handleFileChange = (e) => {
     const selected = e.target.files[0];
@@ -50,7 +52,7 @@ const DocumentPanel = () => {
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await fetch('http://localhost:8000/analyze-document', {
+      const response = await fetch(`${API_BASE}/analyze-document`, {
         method: 'POST',
         body: formData,
         signal: controller.signal,
@@ -58,9 +60,8 @@ const DocumentPanel = () => {
 
       clearTimeout(timeoutId);
 
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
-      }
+      if (response.status === 429) { setRateLimited(true); return; }
+      if (!response.ok) { throw new Error(`HTTP ${response.status}`); }
 
       const data = await response.json();
       setResult(data);

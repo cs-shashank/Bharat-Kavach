@@ -200,13 +200,30 @@ def test_property_4_json_round_trip(bundle: EvidenceBundle):
 
         data = json.loads(path.read_text(encoding="utf-8"))
 
-        assert data["bundle_id"] == bundle.bundle_id
-        assert data["case_id"] == bundle.case_id
-        assert data["analyzed_at"] == bundle.analyzed_at
-        assert data["sha256_hash"] == bundle.sha256_hash
-
-        for name in COMPONENT_NAMES:
-            assert name in data["component_verdicts"], f"{name} missing from round-tripped JSON"
+        # Re-verify by constructing an EvidenceBundle from the deserialized data
+        round_tripped = EvidenceBundle.model_validate(data)
+        assert round_tripped.bundle_id == bundle.bundle_id
+        assert round_tripped.case_id == bundle.case_id
+        assert round_tripped.analyzed_at == bundle.analyzed_at
+        assert round_tripped.sha256_hash == bundle.sha256_hash
+        assert round_tripped.model_registry == bundle.model_registry
+        
+        # Compare chain of custody entries
+        assert len(round_tripped.chain_of_custody) == len(bundle.chain_of_custody)
+        for e1, e2 in zip(round_tripped.chain_of_custody, bundle.chain_of_custody):
+            assert e1.step == e2.step
+            assert e1.component == e2.component
+            assert e1.artifact_type == e2.artifact_type
+            assert e1.action == e2.action
+            assert e1.timestamp == e2.timestamp
+            
+        # Compare verdicts
+        assert round_tripped.component_verdicts.keys() == bundle.component_verdicts.keys()
+        for k, cv1 in round_tripped.component_verdicts.items():
+            cv2 = bundle.component_verdicts[k]
+            assert cv1.verdict == cv2.verdict
+            assert cv1.confidence == cv2.confidence
+            assert cv1.details == cv2.details
     finally:
         shutil.rmtree(tmpdir, ignore_errors=True)
 
@@ -217,7 +234,7 @@ def test_property_4_json_round_trip(bundle: EvidenceBundle):
 # Validates: Requirements 2.4, 3.1
 # ---------------------------------------------------------------------------
 
-@settings(max_examples=50, suppress_health_check=[HealthCheck.too_slow])
+@settings(max_examples=50, suppress_health_check=[HealthCheck.too_slow], deadline=None)
 @given(st.uuids().map(str))
 def test_property_5_filename_convention(bid: str):
     # Feature: bharat-kavach-phase1, Property 5: Exported filename always matches naming convention
@@ -231,9 +248,17 @@ def test_property_5_filename_convention(bid: str):
             f"Expected BK-{bid}.evidence.json, got {json_path.name}"
         )
 
+        pdf_path = exporter.export_pdf(bundle)
+        assert pdf_path.name == f"BK-{bid}.summary.pdf", (
+            f"Expected BK-{bid}.summary.pdf, got {pdf_path.name}"
+        )
+
         pdf_expected = exporter.get_pdf_path(bid)
         assert pdf_expected.name == f"BK-{bid}.summary.pdf", (
             f"Expected BK-{bid}.summary.pdf, got {pdf_expected.name}"
+        )
+        assert pdf_path.resolve() == pdf_expected.resolve(), (
+            f"pdf_path: {pdf_path.resolve()} does not match expected: {pdf_expected.resolve()}"
         )
     finally:
         shutil.rmtree(tmpdir, ignore_errors=True)
