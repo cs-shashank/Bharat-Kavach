@@ -233,8 +233,8 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Action Status Bar */}
-        {caseData.score > 70 && (
+        {/* Action Status Bar — only show after user has actively run an analysis */}
+        {caseData.score > 70 && caseData.id !== null && (
           <div className="fixed bottom-8 right-8 left-28 translate-y-0">
             <div className="bg-red-500 p-4 rounded-2xl flex justify-between items-center shadow-2xl shadow-red-500/30">
               <div className="flex items-center gap-4 text-white">
