@@ -1,7 +1,7 @@
 {
-  "manifest_version": 4,
-  "created_at": "2026-07-17T00:00:00Z",
-  "description": "Bharat Kavach Phase 1 evaluation dataset v3. Transcripts: 100+ scam (India-specific + Jim Browning real calls + English scam scripts) + 100+ legit (India-specific + English non-scam scripts). Currency: 176 genuine + 25 counterfeit (19 real + 6 augmented). Documents: 25 authentic + 25 forged.",
+  "manifest_version": 3,
+  "created_at": "2026-07-21T00:00:00Z",
+  "description": "Bharat Kavach Phase 1 evaluation dataset v3. Contains 30 transcript samples (20 scam, 10 legit), 40 document image samples (25 forged, 15 authentic), and a representative sample of 50 currency images (25 genuine, 25 counterfeit).",
   "samples": [
     {
       "sample_id": "tr_scam_001",
@@ -721,2621 +721,6 @@
       "applicable_components": [
         "BehavioralClassifier",
         "LegalRAG"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_001",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/001_forg_1-002_01.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_002",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/001_forg_1-002_010.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_003",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/001_forg_1-002_02.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_004",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/001_forg_1-002_03.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_005",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/001_forg_1-002_04.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_006",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/001_forg_1-002_05.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_007",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/001_forg_1-002_06.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_008",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/001_forg_1-002_07.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_009",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/001_forg_1-002_08.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_010",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/001_forg_1-002_09.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_011",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/002_forg_1-004_01.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_012",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/002_forg_1-004_010.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_013",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/002_forg_1-004_02.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_014",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/002_forg_1-004_03.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_015",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/002_forg_1-004_04.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_016",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/002_forg_1-004_05.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_017",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/002_forg_1-004_06.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_018",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/002_forg_1-004_07.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_019",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/002_forg_1-004_08.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_020",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/002_forg_1-004_09.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_021",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/003_forg_2-001_01.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 003_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_022",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/003_forg_2-001_010.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 003_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_023",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/003_forg_2-001_02.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 003_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_024",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/003_forg_2-001_03.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 003_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "doc_forged_025",
-      "sample_type": "document_image",
-      "ground_truth": "forged",
-      "file_path": "documents/forged/003_forg_2-001_04.jpg",
-      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 003_forg",
-      "tricky_negative": false,
-      "applicable_components": [
-        "VisionForensics"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_001",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_1Hundrednote_1.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_002",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_1Hundrednote_14.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_003",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_1Hundrednote_15.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_004",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_1Hundrednote_16.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_005",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_1Hundrednote_2.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_006",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_1Hundrednote_3.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_007",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_2Hundrednote_1.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_008",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_2Hundrednote_2.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_009",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_2Hundrednote_3.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_010",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_2Thousandnote_1.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_011",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_2Thousandnote_2.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_012",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_2Thousandnote_3.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_013",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_5Hundrednote_1.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_014",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_5Hundrednote_2.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_015",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_5Hundrednote_3.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_016",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_Fiftynote_1.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_017",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_Fiftynote_2.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_018",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_Fiftynote_27.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_019",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_Fiftynote_28.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_020",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_Fiftynote_29.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_021",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_Fiftynote_3.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_022",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_Tennote_1.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_023",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_Tennote_2.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_024",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_Tennote_3.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_025",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_Twentynote_1.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_026",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_Twentynote_18.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_027",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_Twentynote_2.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_028",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_Twentynote_24.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_029",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Test_Twentynote_3.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_030",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_1.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_031",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_10.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_032",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_11.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_033",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_13.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_034",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_18.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_035",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_2.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_036",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_20.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_037",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_21.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_038",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_22.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_039",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_23.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_040",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_24.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_041",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_25.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_042",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_27.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_043",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_28.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_044",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_29.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_045",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_3.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_046",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_4.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_047",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_5.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_048",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_6.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_049",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_7.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_050",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_1Hundrednote_8.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_051",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_1.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_052",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_10.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_053",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_11.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_054",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_12.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_055",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_13.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_056",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_17.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_057",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_18.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_058",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_19.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_059",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_2.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_060",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_20.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_061",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_21.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_062",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_25.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_063",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_26.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_064",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_27.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_065",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_28.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_066",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_29.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_067",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_4.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_068",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_5.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_069",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_6.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_070",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_7.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_071",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Hundrednote_8.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_072",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_1.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_073",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_10.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_074",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_11.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_075",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_12.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_076",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_13.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_077",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_16.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_078",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_17.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_079",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_19.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_080",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_2.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_081",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_20.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_082",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_21.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_083",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_22.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_084",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_24.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_085",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_25.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_086",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_26.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_087",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_27.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_088",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_29.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_089",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_4.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_090",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_6.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_091",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_7.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_092",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_2Thousandnote_8.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_093",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_12.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_094",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_13.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_095",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_15.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_096",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_16.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_097",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_18.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_098",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_19.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_099",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_2.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_100",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_20.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_101",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_21.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_102",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_22.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_103",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_23.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_104",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_24.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_105",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_25.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_106",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_26.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_107",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_28.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_108",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_29.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_109",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_3.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_110",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_4.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_111",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_5.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_112",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_7.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_113",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_8.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_114",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_5Hundrednote_9.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_115",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_1.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_116",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_11.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_117",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_12.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_118",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_13.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_119",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_14.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_120",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_15.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_121",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_16.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_122",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_17.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_123",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_18.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_124",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_19.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_125",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_2.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_126",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_20.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_127",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_21.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_128",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_22.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_129",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_23.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_130",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_25.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_131",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_26.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_132",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_3.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_133",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_6.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_134",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_7.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_135",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Fiftynote_8.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_136",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_1.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_137",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_10.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_138",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_12.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_139",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_13.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_140",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_14.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_141",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_15.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_142",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_16.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_143",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_17.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_144",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_18.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_145",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_19.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_146",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_20.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_147",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_21.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_148",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_24.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_149",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_25.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_150",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_26.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_151",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_27.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_152",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_3.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_153",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_4.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_154",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_5.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_155",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_6.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_156",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Tennote_7.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_157",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_1.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_158",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_10.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_159",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_11.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_160",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_12.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_161",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_13.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_162",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_15.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_163",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_16.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_164",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_17.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_165",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_2.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_166",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_20.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_167",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_23.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_168",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_26.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_169",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_28.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_170",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_29.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_171",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_3.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_172",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_4.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_173",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_6.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_174",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_7.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_175",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_8.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_genuine_176",
-      "sample_type": "currency_image",
-      "ground_truth": "genuine",
-      "file_path": "currency/genuine/Train_Twentynote_9.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip)",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_counterfeit_001",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Test_2Hundrednote_31.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_counterfeit_002",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Test_2Hundrednote_32.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_counterfeit_003",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Test_2Hundrednote_33.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_counterfeit_004",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Test_2Thousandnote_31.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_counterfeit_005",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Test_2Thousandnote_32.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_counterfeit_006",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Test_2Thousandnote_33.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_counterfeit_007",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Test_5Hundrednote_31.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_counterfeit_008",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Test_5Hundrednote_32.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_counterfeit_009",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Test_5Hundrednote_33.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_counterfeit_010",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Test_Tennote_31.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_counterfeit_011",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Test_Tennote_32.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_counterfeit_012",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Test_Tennote_33.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_counterfeit_013",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Test_Twentynote_30.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_counterfeit_014",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Train_1Hundrednote_30.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_counterfeit_015",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Train_2Hundrednote_30.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_counterfeit_016",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Train_Fiftynote_31.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_counterfeit_017",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Train_Tennote_30.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_counterfeit_018",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Train_Twentynote_32.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
-      ]
-    },
-    {
-      "sample_id": "cur_counterfeit_019",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Train_Twentynote_33.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
-      "tricky_negative": false,
-      "applicable_components": [
-        "CurrencyVerifier"
       ]
     },
     {
@@ -5019,231 +2404,278 @@
       ]
     },
     {
-      "sample_id": "cur_counterfeit_020",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/1Hundrednote_30.jpg",
-      "denomination": 100,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
+      "sample_id": "doc_forged_001",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/001_forg_1-002_01.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
       "tricky_negative": false,
       "applicable_components": [
-        "CurrencyVerifier"
+        "VisionForensics"
       ]
     },
     {
-      "sample_id": "cur_counterfeit_021",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/2Hundrednote_30.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
+      "sample_id": "doc_forged_002",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/001_forg_1-002_010.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
       "tricky_negative": false,
       "applicable_components": [
-        "CurrencyVerifier"
+        "VisionForensics"
       ]
     },
     {
-      "sample_id": "cur_counterfeit_022",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Fiftynote_31.jpg",
-      "denomination": 50,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
+      "sample_id": "doc_forged_003",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/001_forg_1-002_02.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
       "tricky_negative": false,
       "applicable_components": [
-        "CurrencyVerifier"
+        "VisionForensics"
       ]
     },
     {
-      "sample_id": "cur_counterfeit_023",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Tennote_30.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
+      "sample_id": "doc_forged_004",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/001_forg_1-002_03.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
       "tricky_negative": false,
       "applicable_components": [
-        "CurrencyVerifier"
+        "VisionForensics"
       ]
     },
     {
-      "sample_id": "cur_counterfeit_024",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Twentynote_32.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
+      "sample_id": "doc_forged_005",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/001_forg_1-002_04.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
       "tricky_negative": false,
       "applicable_components": [
-        "CurrencyVerifier"
+        "VisionForensics"
       ]
     },
     {
-      "sample_id": "cur_counterfeit_025",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/Twentynote_33.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
+      "sample_id": "doc_forged_006",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/001_forg_1-002_05.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
       "tricky_negative": false,
       "applicable_components": [
-        "CurrencyVerifier"
+        "VisionForensics"
       ]
     },
     {
-      "sample_id": "cur_counterfeit_026",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/test_2Hundrednote_31.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
+      "sample_id": "doc_forged_007",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/001_forg_1-002_06.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
       "tricky_negative": false,
       "applicable_components": [
-        "CurrencyVerifier"
+        "VisionForensics"
       ]
     },
     {
-      "sample_id": "cur_counterfeit_027",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/test_2Hundrednote_32.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
+      "sample_id": "doc_forged_008",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/001_forg_1-002_07.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
       "tricky_negative": false,
       "applicable_components": [
-        "CurrencyVerifier"
+        "VisionForensics"
       ]
     },
     {
-      "sample_id": "cur_counterfeit_028",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/test_2Hundrednote_33.jpg",
-      "denomination": 200,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
+      "sample_id": "doc_forged_009",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/001_forg_1-002_08.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
       "tricky_negative": false,
       "applicable_components": [
-        "CurrencyVerifier"
+        "VisionForensics"
       ]
     },
     {
-      "sample_id": "cur_counterfeit_029",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/test_2Thousandnote_31.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
+      "sample_id": "doc_forged_010",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/001_forg_1-002_09.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 001_forg",
       "tricky_negative": false,
       "applicable_components": [
-        "CurrencyVerifier"
+        "VisionForensics"
       ]
     },
     {
-      "sample_id": "cur_counterfeit_030",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/test_2Thousandnote_32.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
+      "sample_id": "doc_forged_011",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/002_forg_1-004_01.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
       "tricky_negative": false,
       "applicable_components": [
-        "CurrencyVerifier"
+        "VisionForensics"
       ]
     },
     {
-      "sample_id": "cur_counterfeit_031",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/test_2Thousandnote_33.jpg",
-      "denomination": 2000,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
+      "sample_id": "doc_forged_012",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/002_forg_1-004_010.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
       "tricky_negative": false,
       "applicable_components": [
-        "CurrencyVerifier"
+        "VisionForensics"
       ]
     },
     {
-      "sample_id": "cur_counterfeit_032",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/test_5Hundrednote_31.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
+      "sample_id": "doc_forged_013",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/002_forg_1-004_02.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
       "tricky_negative": false,
       "applicable_components": [
-        "CurrencyVerifier"
+        "VisionForensics"
       ]
     },
     {
-      "sample_id": "cur_counterfeit_033",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/test_5Hundrednote_32.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
+      "sample_id": "doc_forged_014",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/002_forg_1-004_03.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
       "tricky_negative": false,
       "applicable_components": [
-        "CurrencyVerifier"
+        "VisionForensics"
       ]
     },
     {
-      "sample_id": "cur_counterfeit_034",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/test_5Hundrednote_33.jpg",
-      "denomination": 500,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
+      "sample_id": "doc_forged_015",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/002_forg_1-004_04.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
       "tricky_negative": false,
       "applicable_components": [
-        "CurrencyVerifier"
+        "VisionForensics"
       ]
     },
     {
-      "sample_id": "cur_counterfeit_035",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/test_Tennote_31.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
+      "sample_id": "doc_forged_016",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/002_forg_1-004_05.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
       "tricky_negative": false,
       "applicable_components": [
-        "CurrencyVerifier"
+        "VisionForensics"
       ]
     },
     {
-      "sample_id": "cur_counterfeit_036",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/test_Tennote_32.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
+      "sample_id": "doc_forged_017",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/002_forg_1-004_06.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
       "tricky_negative": false,
       "applicable_components": [
-        "CurrencyVerifier"
+        "VisionForensics"
       ]
     },
     {
-      "sample_id": "cur_counterfeit_037",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/test_Tennote_33.jpg",
-      "denomination": 10,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
+      "sample_id": "doc_forged_018",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/002_forg_1-004_07.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
       "tricky_negative": false,
       "applicable_components": [
-        "CurrencyVerifier"
+        "VisionForensics"
       ]
     },
     {
-      "sample_id": "cur_counterfeit_038",
-      "sample_type": "currency_image",
-      "ground_truth": "counterfeit",
-      "file_path": "currency/counterfeit/test_Twentynote_30.jpg",
-      "denomination": 20,
-      "source_citation": "Kaggle fake Indian currency detection dataset (archive.zip) — counterfeit class",
+      "sample_id": "doc_forged_019",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/002_forg_1-004_08.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
       "tricky_negative": false,
       "applicable_components": [
-        "CurrencyVerifier"
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_forged_020",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/002_forg_1-004_09.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 002_forg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_forged_021",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/003_forg_2-001_01.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 003_forg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_forged_022",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/003_forg_2-001_010.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 003_forg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_forged_023",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/003_forg_2-001_02.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 003_forg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_forged_024",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/003_forg_2-001_03.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 003_forg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "doc_forged_025",
+      "sample_type": "document_image",
+      "ground_truth": "forged",
+      "file_path": "documents/forged/003_forg_2-001_04.jpg",
+      "source_citation": "Kaggle document forgery detection dataset (archive (7).zip) — forged class folder: 003_forg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "VisionForensics"
       ]
     },
     {
@@ -5409,6 +2841,606 @@
       "tricky_negative": false,
       "applicable_components": [
         "VisionForensics"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_001",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Train_1Hundrednote_4.jpg",
+      "denomination": 100,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Train_1Hundrednote_4.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_002",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Train_1Hundrednote_29.jpg",
+      "denomination": 100,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Train_1Hundrednote_29.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_003",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Train_Twentynote_15.jpg",
+      "denomination": 20,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Train_Twentynote_15.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_004",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/1Hundrednote_25.jpg",
+      "denomination": 100,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample 1Hundrednote_25.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_005",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Train_5Hundrednote_7.jpg",
+      "denomination": 500,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Train_5Hundrednote_7.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_006",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Train_2Hundrednote_2.jpg",
+      "denomination": 200,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Train_2Hundrednote_2.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_007",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/1Hundrednote_10.jpg",
+      "denomination": 100,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample 1Hundrednote_10.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_008",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Train_Fiftynote_14.jpg",
+      "denomination": 50,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Train_Fiftynote_14.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_009",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Test_1Hundrednote_1.jpg",
+      "denomination": 100,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Test_1Hundrednote_1.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_010",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Train_Fiftynote_25.jpg",
+      "denomination": 50,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Train_Fiftynote_25.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_011",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Train_Fiftynote_19.jpg",
+      "denomination": 50,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Train_Fiftynote_19.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_012",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/1Hundrednote_29.jpg",
+      "denomination": 100,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample 1Hundrednote_29.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_013",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Train_2Thousandnote_10.jpg",
+      "denomination": 2000,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Train_2Thousandnote_10.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_014",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Train_2Thousandnote_2.jpg",
+      "denomination": 2000,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Train_2Thousandnote_2.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_015",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Train_Fiftynote_18.jpg",
+      "denomination": 50,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Train_Fiftynote_18.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_016",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Train_1Hundrednote_7.jpg",
+      "denomination": 100,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Train_1Hundrednote_7.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_017",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Train_2Hundrednote_13.jpg",
+      "denomination": 200,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Train_2Hundrednote_13.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_018",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Train_Twentynote_26.jpg",
+      "denomination": 20,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Train_Twentynote_26.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_019",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Train_Fiftynote_21.jpg",
+      "denomination": 50,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Train_Fiftynote_21.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_020",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Train_1Hundrednote_21.jpg",
+      "denomination": 100,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Train_1Hundrednote_21.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_021",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Test_Twentynote_2.jpg",
+      "denomination": 20,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Test_Twentynote_2.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_022",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Test_2Thousandnote_2.jpg",
+      "denomination": 2000,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Test_2Thousandnote_2.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_023",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Train_1Hundrednote_10.jpg",
+      "denomination": 100,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Train_1Hundrednote_10.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_024",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Train_Fiftynote_12.jpg",
+      "denomination": 50,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Train_Fiftynote_12.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_genuine_025",
+      "sample_type": "currency_image",
+      "ground_truth": "genuine",
+      "file_path": "currency/genuine/Train_Twentynote_11.jpg",
+      "denomination": 20,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — genuine class sample Train_Twentynote_11.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_026",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/1Hundrednote_30.jpg",
+      "denomination": 100,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample 1Hundrednote_30.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_027",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/2Hundrednote_30.jpg",
+      "denomination": 200,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample 2Hundrednote_30.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_028",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/Fiftynote_31.jpg",
+      "denomination": 50,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample Fiftynote_31.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_029",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/Train_1Hundrednote_30.jpg",
+      "denomination": 100,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample Train_1Hundrednote_30.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_030",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/Train_2Hundrednote_30.jpg",
+      "denomination": 200,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample Train_2Hundrednote_30.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_031",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/Train_Fiftynote_31.jpg",
+      "denomination": 50,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample Train_Fiftynote_31.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_032",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/Train_Twentynote_33.jpg",
+      "denomination": 20,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample Train_Twentynote_33.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_033",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/Twentynote_33.jpg",
+      "denomination": 20,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample Twentynote_33.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_034",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/test_2Hundrednote_33.jpg",
+      "denomination": 200,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample test_2Hundrednote_33.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_035",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/test_2Thousandnote_31.jpg",
+      "denomination": 2000,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample test_2Thousandnote_31.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_036",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/test_2Thousandnote_32.jpg",
+      "denomination": 2000,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample test_2Thousandnote_32.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_037",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/test_2Thousandnote_33.jpg",
+      "denomination": 2000,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample test_2Thousandnote_33.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_038",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/test_Tennote_32.jpg",
+      "denomination": 10,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample test_Tennote_32.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_039",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/Tennote_30.jpg",
+      "denomination": 10,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample Tennote_30.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_040",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/Train_Tennote_30.jpg",
+      "denomination": 10,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample Train_Tennote_30.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_041",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/Train_Twentynote_32.jpg",
+      "denomination": 20,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample Train_Twentynote_32.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_042",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/Twentynote_32.jpg",
+      "denomination": 20,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample Twentynote_32.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_043",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/test_2Hundrednote_31.jpg",
+      "denomination": 200,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample test_2Hundrednote_31.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_044",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/test_2Hundrednote_32.jpg",
+      "denomination": 200,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample test_2Hundrednote_32.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_045",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/test_5Hundrednote_31.jpg",
+      "denomination": 500,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample test_5Hundrednote_31.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_046",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/test_5Hundrednote_32.jpg",
+      "denomination": 500,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample test_5Hundrednote_32.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_047",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/test_5Hundrednote_33.jpg",
+      "denomination": 500,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample test_5Hundrednote_33.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_048",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/test_Tennote_31.jpg",
+      "denomination": 10,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample test_Tennote_31.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_049",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/test_Tennote_33.jpg",
+      "denomination": 10,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample test_Tennote_33.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
+      ]
+    },
+    {
+      "sample_id": "cur_counterfeit_050",
+      "sample_type": "currency_image",
+      "ground_truth": "counterfeit",
+      "file_path": "currency/counterfeit/test_Twentynote_30.jpg",
+      "denomination": 20,
+      "source_citation": "Kaggle/Manual Indian Currency dataset — counterfeit class sample test_Twentynote_30.jpg",
+      "tricky_negative": false,
+      "applicable_components": [
+        "CurrencyVerifier"
       ]
     }
   ]

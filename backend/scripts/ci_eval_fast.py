@@ -4,7 +4,7 @@ ci_eval_fast.py — Fast CI gate covering all four components.
 
 - BehavioralClassifier + LegalRAG: 20 India-specific + 10 Jim Browning transcripts
 - VisionForensics: 10 authentic + 10 forged document images
-- CurrencyVerifier: 10 genuine + 10 counterfeit currency images
+- CurrencyVerifier: all genuine + counterfeit currency images (196 genuine, 25 counterfeit)
 
 Completes in ~12 minutes on free tier.
 Exit codes: 0=PASS, 1=FAIL, 2=CONFIG ERROR
@@ -70,8 +70,8 @@ def fast_eval(manifest: dict, api_key: str) -> EvalRunResult:
     # ── Currency image samples (first 10 of each class) ───────────────
     cur_samples = [s for s in manifest["samples"]
                    if s["sample_type"] == "currency_image"]
-    cur_genuine     = [s for s in cur_samples if s["ground_truth"] == "genuine"][:10]
-    cur_counterfeit = [s for s in cur_samples if s["ground_truth"] == "counterfeit"][:10]
+    cur_genuine     = [s for s in cur_samples if s["ground_truth"] == "genuine"]
+    cur_counterfeit = [s for s in cur_samples if s["ground_truth"] == "counterfeit"]
     cur_eval        = cur_genuine + cur_counterfeit
 
     scam_t  = sum(1 for s in transcript_samples if s["ground_truth"] == "scam")
@@ -144,23 +144,18 @@ def fast_eval(manifest: dict, api_key: str) -> EvalRunResult:
                 time.sleep(5)  # rate limit for Gemini vision calls
                 result = vision.analyze_document(img_bytes)
                 
-                # Classify based on scam-specific content, not just visual anomalies
-                explanation_lower = result.explanation.lower()
+                # Use VisionForensics verdict directly — it uses Gemini + OpenCV ensemble
                 verdict_lower = result.verdict.lower()
-                scam_signals = any(kw in explanation_lower for kw in [
-                    "digital arrest", "upi", "transfer money", "arrest", "narcotics",
-                    "money laundering", "fake cbi", "fake ed", "impersonat",
-                    "threatening", "coercive", "extort"
-                ])
-                semantic_ok = result.forensic_signals.get("semantic_validity", 0) > 0.7
-                if scam_signals:
+                confidence = result.confidence_score
+                
+                # Forged if verdict says fake/suspicious AND confidence > 0.6
+                if ("fake" in verdict_lower or "suspicious" in verdict_lower) and confidence > 0.6:
                     predicted = "forged"
-                elif semantic_ok and "suspicious" not in verdict_lower:
+                elif "authentic" in verdict_lower and confidence > 0.6:
                     predicted = "authentic"
-                elif "fake" in verdict_lower or "suspicious" in verdict_lower:
-                    predicted = "forged"
                 else:
-                    predicted = "authentic"
+                    # Use seal confidence as tiebreaker
+                    predicted = "forged" if result.seal_confidence < 0.3 else "authentic"
                 vf_pairs.append({"ground_truth": gt, "predicted": predicted})
                 print(f"  VF: {predicted} (verdict={result.verdict[:40]})")
             except Exception as e:

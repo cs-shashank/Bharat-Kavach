@@ -150,7 +150,7 @@ def test_property_12_all_passing_returns_no_failures(_):
 
 
 # ---------------------------------------------------------------------------
-# Property 13: CIGate skips threshold check when sample_count < MIN_SAMPLES_FOR_GATE
+# Property 13: CIGate skips threshold check when sample_count < 10
 # Feature: bharat-kavach-phase1, Property 13
 # Validates: Requirements 9.8
 # ---------------------------------------------------------------------------
@@ -161,7 +161,7 @@ def test_property_12_all_passing_returns_no_failures(_):
     st.integers(min_value=0, max_value=MIN_SAMPLES_FOR_GATE - 1),
 )
 def test_property_13_insufficient_data_skips_gate(component, sample_count):
-    # Feature: bharat-kavach-phase1, Property 13: CIGate skips threshold check when sample_count < MIN_SAMPLES_FOR_GATE
+    # Feature: bharat-kavach-phase1, Property 13: CIGate skips threshold check when sample_count < 10
     run = _make_run_all_pass()
     # Set the sample_count to below the minimum — and set precision to 0 to ensure
     # it would fail if the gate ran
