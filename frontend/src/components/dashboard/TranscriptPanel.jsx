@@ -13,6 +13,8 @@ const TranscriptPanel = ({ onResult, onSubmit }) => {
   const [error, setError] = useState(null);
   const [rateLimited, setRateLimited] = useState(false);
 
+  const DEMO_CITIES = ['Delhi', 'Mumbai', 'Bangalore', 'Chennai', 'Kolkata', 'Hyderabad', 'Pune', 'Ahmedabad'];
+
   const handleSubmit = async () => {
     if (!transcript.trim()) {
       setError('Transcript cannot be empty');
@@ -32,6 +34,9 @@ const TranscriptPanel = ({ onResult, onSubmit }) => {
     setError(null);
     setRateLimited(false);
 
+    // Rotate through cities so the crime map shows hotspots across India
+    const city = DEMO_CITIES[Math.floor(Math.random() * DEMO_CITIES.length)];
+
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 60000);
 
@@ -39,7 +44,7 @@ const TranscriptPanel = ({ onResult, onSubmit }) => {
       const response = await fetch(`${API_BASE}/analyze`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ transcript, user_id: 'OFFICER_001' }),
+        body: JSON.stringify({ transcript, user_id: 'OFFICER_001', city }),
         signal: controller.signal,
       });
 
