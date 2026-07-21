@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Camera, User, Phone, MoreVertical, ShieldAlert, WifiOff, CheckCircle } from 'lucide-react';
+import { API_BASE } from '../../config.js';
 
 // Feature: bharat-kavach-complete
 // Requirements: 8.1–8.8
@@ -181,7 +182,7 @@ const CitizenApp = () => {
     const timeoutId = setTimeout(() => controller.abort(), 10000);
 
     try {
-      const response = await fetch("http://localhost:8000/analyze", {
+      const response = await fetch(`${API_BASE}/analyze`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ transcript: userText }),

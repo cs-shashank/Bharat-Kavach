@@ -10,6 +10,7 @@ import TranscriptPanel from './TranscriptPanel';
 import DocumentPanel from './DocumentPanel';
 import CurrencyPanel from './CurrencyPanel';
 import { Shield, Activity, Users, MapIcon, Bell, Download, ShieldAlert, AlertTriangle } from 'lucide-react';
+import { API_BASE } from '../../config.js';
 
 // Exported for testing — returns true if any finding has verdict === "confirmed_false"
 export function hasFalseFindings(findings) {
@@ -34,7 +35,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchCases = async () => {
       try {
-        const response = await fetch('http://localhost:8000/cases');
+        const response = await fetch(`${API_BASE}/cases`);
         const data = await response.json();
         if (data.length > 0) {
           const latest = data[0];
@@ -54,7 +55,7 @@ const Dashboard = () => {
     fetchCases();
 
     const clientId = "POLICE_NODE_" + Math.floor(Math.random() * 1000);
-    const ws = new WebSocket(`ws://localhost:8000/ws/${clientId}`);
+    const ws = new WebSocket(`${API_BASE.replace('https://', 'wss://').replace('http://', 'ws://')}/ws/${clientId}`);
 
     ws.onmessage = (event) => {
       const message = JSON.parse(event.data);
@@ -74,7 +75,7 @@ const Dashboard = () => {
           },
         }));
         // Re-fetch cases to refresh history for FraudNetwork and CrimeMap
-        fetch('http://localhost:8000/cases')
+        fetch(`${API_BASE}/cases`)
           .then(r => r.json())
           .then(data => setCaseData(prev => ({ ...prev, history: data })))
           .catch(err => console.error("Failed to refresh cases:", err));
