@@ -226,6 +226,31 @@ async def analyze_document(file: UploadFile = File(...)):
         return {"error": "Vision Engine not initialized. Add GOOGLE_API_KEY."}
     
     contents = await file.read()
+
+    # Convert PDF to JPEG if needed — OpenCV cannot decode PDFs directly
+    if file.content_type == "application/pdf" or file.filename.lower().endswith(".pdf"):
+        try:
+            import fitz  # PyMuPDF
+            doc = fitz.open(stream=contents, filetype="pdf")
+            page = doc[0]
+            mat = fitz.Matrix(2.0, 2.0)  # 2x zoom for better resolution
+            pix = page.get_pixmap(matrix=mat)
+            contents = pix.tobytes("jpeg")
+            doc.close()
+        except ImportError:
+            # PyMuPDF not installed — try PIL as fallback
+            try:
+                from PIL import Image
+                import io
+                pdf_img = Image.open(io.BytesIO(contents))
+                buf = io.BytesIO()
+                pdf_img.convert("RGB").save(buf, format="JPEG")
+                contents = buf.getvalue()
+            except Exception:
+                return {"error": "PDF conversion failed. Please upload a JPEG or PNG image instead."}
+        except Exception as e:
+            return {"error": f"PDF processing error: {str(e)}. Please upload a JPEG or PNG image."}
+
     results = vision_engine.analyze_document(contents)
     
     return results.dict()

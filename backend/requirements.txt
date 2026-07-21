@@ -15,5 +15,6 @@ sqlalchemy
 aiosqlite
 hypothesis
 google-genai
+PyMuPDF
 
 reportlab==4.2.5
