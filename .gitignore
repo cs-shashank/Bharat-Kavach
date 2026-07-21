@@ -20,3 +20,15 @@ backend/.hypothesis/
 # SQLite databases
 *.db
 
+# Generated evidence export bundles (runtime artifacts)
+backend/backend/data/evidence_exports/
+backend/data/evidence_exports/*.json
+backend/data/evidence_exports/*.pdf
+
+# CI eval run logs
+backend/ci_eval_run*.log
+
+# pytest cache
+.pytest_cache/
+backend/.pytest_cache/
+
