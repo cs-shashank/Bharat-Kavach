@@ -16,6 +16,7 @@ from ai_engines.vision import VisionForensics
 from ai_engines.currency import CurrencyVerifier
 from services.intervention import InterventionService
 from services.evidence_exporter import EvidenceExporter, EvidenceBundle
+from services.fraud_network import FraudNetworkAnalyzer
 from database import get_db, CaseReport, ForensicDocument
 from sqlalchemy.orm import Session
 from fastapi import Depends
@@ -23,7 +24,17 @@ from fastapi import Depends
 # Load environment variables
 load_dotenv()
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI(title="Bharat Kavach API", version="1.0.0")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 logger = logging.getLogger("bharat_kavach")
 
@@ -215,6 +226,31 @@ async def analyze_document(file: UploadFile = File(...)):
         return {"error": "Vision Engine not initialized. Add GOOGLE_API_KEY."}
     
     contents = await file.read()
+
+    # Convert PDF to JPEG if needed — OpenCV cannot decode PDFs directly
+    if file.content_type == "application/pdf" or file.filename.lower().endswith(".pdf"):
+        try:
+            import fitz  # PyMuPDF
+            doc = fitz.open(stream=contents, filetype="pdf")
+            page = doc[0]
+            mat = fitz.Matrix(2.0, 2.0)  # 2x zoom for better resolution
+            pix = page.get_pixmap(matrix=mat)
+            contents = pix.tobytes("jpeg")
+            doc.close()
+        except ImportError:
+            # PyMuPDF not installed — try PIL as fallback
+            try:
+                from PIL import Image
+                import io
+                pdf_img = Image.open(io.BytesIO(contents))
+                buf = io.BytesIO()
+                pdf_img.convert("RGB").save(buf, format="JPEG")
+                contents = buf.getvalue()
+            except Exception:
+                return {"error": "PDF conversion failed. Please upload a JPEG or PNG image instead."}
+        except Exception as e:
+            return {"error": f"PDF processing error: {str(e)}. Please upload a JPEG or PNG image."}
+
     results = vision_engine.analyze_document(contents)
     
     return results.dict()
@@ -307,6 +343,62 @@ async def download_case_evidence_pdf(case_id: int, db: Session = Depends(get_db)
         filename=pdf_path.name,
         headers={"Content-Disposition": f"attachment; filename={pdf_path.name}"},
     )
+
+
+# ---------------------------------------------------------------------------
+# Fraud Network Graph Intelligence — PS Requirement 3
+# ---------------------------------------------------------------------------
+
+_fraud_analyzer = FraudNetworkAnalyzer()
+
+@app.get("/fraud-network")
+async def get_fraud_network(db: Session = Depends(get_db)):
+    """
+    Build and return a NetworkX fraud graph from all high-risk cases.
+    Returns nodes, edges, centrality metrics, hub detection, and
+    court-admissible evidence export.
+    """
+    cases = db.query(CaseReport).filter(CaseReport.risk_score > 60).order_by(
+        CaseReport.timestamp.desc()
+    ).limit(100).all()
+
+    if not cases:
+        return {
+            "nodes": [], "edges": [],
+            "hub_count": 0, "victim_count": 0,
+            "total_nodes": 0, "total_edges": 0,
+            "cluster_count": 0,
+            "analytic_insight": "No high-risk cases available for network analysis.",
+            "exportable_evidence": {}
+        }
+
+    result = _fraud_analyzer.build_graph(cases)
+    return {
+        "nodes": [
+            {
+                "node_id": n.node_id,
+                "node_type": n.node_type,
+                "label": n.label,
+                "case_ids": n.case_ids,
+                "degree_centrality": n.degree_centrality,
+                "betweenness_centrality": n.betweenness_centrality,
+                "is_hub": n.is_hub,
+            }
+            for n in result.nodes
+        ],
+        "edges": [
+            {"source": e.source, "target": e.target,
+             "edge_type": e.edge_type, "weight": e.weight}
+            for e in result.edges
+        ],
+        "hub_count": result.hub_count,
+        "victim_count": result.victim_count,
+        "total_nodes": result.total_nodes,
+        "total_edges": result.total_edges,
+        "cluster_count": result.cluster_count,
+        "analytic_insight": result.analytic_insight,
+        "exportable_evidence": result.exportable_evidence,
+    }
 
 
 if __name__ == "__main__":

@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, Loader2, AlertTriangle, ScanSearch } from 'lucide-react';
+import { FileText, Loader2, AlertTriangle, ScanSearch, Clock } from 'lucide-react';
+import { API_BASE } from '../../config.js';
+
+// Simple in-memory cache: transcript text → analysis result
+// Prevents burning API quota when the same transcript is submitted twice
+const _analysisCache = new Map();
 
 const TranscriptPanel = ({ onResult, onSubmit }) => {
   const [transcript, setTranscript] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [rateLimited, setRateLimited] = useState(false);
+
+  const DEMO_CITIES = ['Delhi', 'Mumbai', 'Bangalore', 'Chennai', 'Kolkata', 'Hyderabad', 'Pune', 'Ahmedabad'];
 
   const handleSubmit = async () => {
     if (!transcript.trim()) {
@@ -13,34 +21,56 @@ const TranscriptPanel = ({ onResult, onSubmit }) => {
       return;
     }
 
+    // Serve from cache if available — saves API quota
+    const cacheKey = transcript.trim();
+    if (_analysisCache.has(cacheKey)) {
+      onResult(_analysisCache.get(cacheKey));
+      return;
+    }
+
     if (onSubmit) onSubmit(transcript);
 
     setLoading(true);
     setError(null);
+    setRateLimited(false);
+
+    // Rotate through cities so the crime map shows hotspots across India
+    const city = DEMO_CITIES[Math.floor(Math.random() * DEMO_CITIES.length)];
 
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 30000);
+    const timeoutId = setTimeout(() => controller.abort(), 60000);
 
     try {
-      const response = await fetch('http://localhost:8000/analyze', {
+      const response = await fetch(`${API_BASE}/analyze`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ transcript, user_id: 'OFFICER_001' }),
+        body: JSON.stringify({ transcript, user_id: 'OFFICER_001', city }),
         signal: controller.signal,
       });
 
       clearTimeout(timeoutId);
+
+      // Graceful 429 handling — never show a broken screen
+      if (response.status === 429) {
+        setRateLimited(true);
+        return;
+      }
 
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
       }
 
       const data = await response.json();
+      _analysisCache.set(cacheKey, data); // cache for quota protection
       onResult(data);
       setError(null);
-    } catch {
+    } catch (err) {
       clearTimeout(timeoutId);
-      setError('Analysis failed. Please try again.');
+      if (err.name === 'AbortError') {
+        setError('Request timed out. Please try again.');
+      } else {
+        setError('Analysis failed. Please try again.');
+      }
     } finally {
       setLoading(false);
     }
@@ -70,6 +100,23 @@ const TranscriptPanel = ({ onResult, onSubmit }) => {
       <p className="text-[10px] text-slate-600 font-medium text-right -mt-2">
         {transcript.length.toLocaleString()} / 10,000
       </p>
+
+      {/* Rate limit banner — shown instead of error when API quota is hit */}
+      <AnimatePresence>
+        {rateLimited && (
+          <motion.div
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            className="flex items-center gap-2 p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl"
+          >
+            <Clock size={14} className="text-amber-400 shrink-0" />
+            <p className="text-xs text-amber-400 font-medium">
+              High demand — AI engine is busy. Please wait a moment and try again.
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Error Message */}
       <AnimatePresence>

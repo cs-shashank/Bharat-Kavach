@@ -1,70 +1,76 @@
 import cv2
 import numpy as np
-from typing import Dict, List
-import io
-from PIL import Image
+from typing import Dict
+
 
 class CurrencyVerifier:
     """
-    Forensic verification module for Indian Currency (₹500 Focus).
-    Uses Region of Interest (ROI) analysis for security features.
+    Forensic verification module for Indian Currency — denomination-agnostic.
+
+    Uses edge density + local sharpness variance (Laplacian) across the
+    whole note, since fixed per-denomination ROIs don't generalize across
+    ₹10/₹20/₹50/₹100/₹200/₹500/₹2000 notes.
+
+    Thresholds are calibrated empirically via scripts/calibrate_currency_thresholds.py
+    against the actual genuine/counterfeit image folders.
     """
-    
-    def __init__(self):
-        # Normalized coordinates for ₹500 security features (percentage of width/height)
-        self.ROIS_500 = {
-            "security_thread": {"x": (0.6, 0.65), "y": (0.0, 1.0)},
-            "watermark_gandhi": {"x": (0.75, 0.95), "y": (0.2, 0.8)},
-            "bleeding_lines": {"x": (0.0, 0.05), "y": (0.3, 0.7)},
+
+    def __init__(self,
+                 edge_density_threshold: float = 0.1034,
+                 sharpness_threshold: float = 1883.12):
+        # Starting defaults — override after running calibrate_currency_thresholds.py
+        self.edge_density_threshold = edge_density_threshold
+        self.sharpness_threshold = sharpness_threshold
+
+    def _compute_features(self, img: np.ndarray) -> Dict:
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        gray = cv2.resize(gray, (600, 300))  # normalize scale across denominations
+
+        # Edge density — genuine notes have fine, dense microprinting
+        # Counterfeit prints often blur/smear fine lines → lower edge density
+        edges = cv2.Canny(gray, 100, 200)
+        edge_density = np.sum(edges > 0) / edges.size
+
+        # Local sharpness (Laplacian variance) — genuine intaglio printing
+        # has crisp raised-ink edges; counterfeit offset/inkjet prints are softer
+        laplacian_var = cv2.Laplacian(gray, cv2.CV_64F).var()
+
+        # Color channel separation — genuine notes use specific ink formulations
+        # Poor-quality counterfeits often have muddier, less-separated channels
+        b, g, r = cv2.split(cv2.resize(img, (600, 300)))
+        channel_std = float(np.std([np.std(b), np.std(g), np.std(r)]))
+
+        return {
+            "edge_density": round(float(edge_density), 4),
+            "sharpness_variance": round(float(laplacian_var), 2),
+            "channel_separation": round(channel_std, 2),
         }
 
-    def _get_roi(self, img: np.ndarray, roi_name: str):
-        h, w = img.shape[:2]
-        coords = self.ROIS_500[roi_name]
-        x_start, x_end = int(coords["x"][0] * w), int(coords["x"][1] * w)
-        y_start, y_end = int(coords["y"][0] * h), int(coords["y"][1] * h)
-        return img[y_start:y_end, x_start:x_end]
-
     def verify_note(self, image_bytes: bytes) -> Dict:
-        """
-        Main entry point for currency forensic audit.
-        """
-        # Convert bytes to OpenCV image
         nparr = np.frombuffer(image_bytes, np.uint8)
         img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
         if img is None:
             return {"error": "Invalid image format"}
 
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        
-        # 1. Security Thread Continuity Check
-        thread_roi = self._get_roi(gray, "security_thread")
-        _, binary_thread = cv2.threshold(thread_roi, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-        thread_density = np.sum(binary_thread == 0) / binary_thread.size
-        
-        # 2. Watermark Histogram Analysis (Checking for 'washed' appearance)
-        watermark_roi = self._get_roi(gray, "watermark_gandhi")
-        std_dev = np.std(watermark_roi)
-        
-        # Forensic Verdict Logic
-        features = {
-            "thread_detected": thread_density > 0.05,
-            "thread_density_score": round(float(thread_density), 3),
-            "watermark_complexity_score": round(float(std_dev), 2),
-            "is_suspicious": False
-        }
-        
-        # Detection of 'Photocopy' attempts (Flat histogram in watermark area)
-        if std_dev < 15.0 or thread_density < 0.02:
-            features["is_suspicious"] = True
-            features["reason"] = "Low complexity in security regions (Possible scan/print)"
-            
+        features = self._compute_features(img)
+
+        # Ensemble: flag suspicious only when BOTH signals are weak
+        # (avoids false positives from low-quality genuine note photos)
+        is_suspicious = (
+            features["edge_density"] < self.edge_density_threshold
+            and features["sharpness_variance"] < self.sharpness_threshold
+        )
+
         return {
             "status": "ANALYZED",
-            "note_type": "500_INR_NEW",
-            "signals": features,
-            "disclaimer": "POC Mode: Forensic estimate only."
+            "note_type": "INR_MULTI_DENOMINATION_POC",
+            "signals": {**features, "is_suspicious": is_suspicious},
+            "disclaimer": (
+                "POC Mode: Denomination-agnostic forensic heuristic. "
+                "Not certified — production requires a trained CNN classifier."
+            ),
         }
+
 
 if __name__ == "__main__":
     print("CurrencyVerifier module loaded.")

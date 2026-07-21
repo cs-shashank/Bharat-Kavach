@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Banknote, Upload, Loader2, AlertTriangle, CheckCircle, ShieldAlert, Shield } from 'lucide-react';
+import { Banknote, Upload, Loader2, AlertTriangle, CheckCircle, ShieldAlert, Shield, Clock } from 'lucide-react';
+import { API_BASE } from '../../config.js';
 
 const ALLOWED_MIME_TYPES = ['image/jpeg', 'image/png'];
 
@@ -9,6 +10,7 @@ const CurrencyPanel = () => {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
+  const [rateLimited, setRateLimited] = useState(false);
 
   const handleFileChange = (e) => {
     const selected = e.target.files[0];
@@ -42,7 +44,7 @@ const CurrencyPanel = () => {
       const formData = new FormData();
       formData.append('file', file);
 
-      const response = await fetch('http://localhost:8000/analyze-currency', {
+      const response = await fetch(`${API_BASE}/analyze-currency`, {
         method: 'POST',
         body: formData,
         signal: controller.signal,
@@ -50,9 +52,8 @@ const CurrencyPanel = () => {
 
       clearTimeout(timeoutId);
 
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
-      }
+      if (response.status === 429) { setRateLimited(true); return; }
+      if (!response.ok) { throw new Error(`HTTP ${response.status}`); }
 
       const data = await response.json();
       setResult(data);

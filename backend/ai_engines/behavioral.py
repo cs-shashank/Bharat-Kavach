@@ -76,8 +76,7 @@ class BehavioralClassifier:
                 err = str(e)
                 if "429" in err and attempt < retries - 1:
                     m = re.search(r"seconds:\s*(\d+)", err)
-                    delay = int(m.group(1)) + 2 if m else 5
-                    delay = min(delay, 10)  # cap at 10s — rate limiter handles pacing
+                    delay = int(m.group(1)) + 2 if m else 60
                     print(f"[BehavioralClassifier] Rate limited. Retrying in {delay}s...")
                     time.sleep(delay)
                 else:

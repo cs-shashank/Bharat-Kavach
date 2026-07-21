@@ -1,0 +1,66 @@
+{
+  "run_id": "4cb992e_2026-07-21T02:51:32Z",
+  "manifest_version": 4,
+  "git_commit_sha": "4cb992e",
+  "run_at": "2026-07-21T02:51:32Z",
+  "per_component": {
+    "BehavioralClassifier": {
+      "component": "BehavioralClassifier",
+      "sample_count": 30,
+      "precision": 1.0,
+      "recall": 0.3,
+      "f1": 0.4615,
+      "fpr": 0.0,
+      "confusion": {
+        "tp": 6,
+        "tn": 10,
+        "fp": 0,
+        "fn": 14
+      }
+    },
+    "LegalRAG": {
+      "component": "LegalRAG",
+      "sample_count": 30,
+      "precision": 1.0,
+      "recall": 0.55,
+      "f1": 0.7097,
+      "fpr": 0.0,
+      "confusion": {
+        "tp": 11,
+        "tn": 10,
+        "fp": 0,
+        "fn": 9
+      }
+    },
+    "VisionForensics": {
+      "component": "VisionForensics",
+      "sample_count": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "fpr": 0.0,
+      "confusion": {
+        "tp": 10,
+        "tn": 10,
+        "fp": 0,
+        "fn": 0
+      }
+    },
+    "CurrencyVerifier": {
+      "component": "CurrencyVerifier",
+      "sample_count": 30,
+      "precision": 0.55,
+      "recall": 0.7333,
+      "f1": 0.6286,
+      "fpr": 0.6,
+      "confusion": {
+        "tp": 11,
+        "tn": 6,
+        "fp": 9,
+        "fn": 4
+      }
+    }
+  },
+  "eval_errors": [],
+  "raw_results": []
+}
