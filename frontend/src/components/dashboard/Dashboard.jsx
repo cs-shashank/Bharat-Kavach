@@ -241,7 +241,9 @@ const Dashboard = () => {
                 <AlertTriangle className="animate-bounce" />
                 <div>
                   <p className="font-black text-sm uppercase">Automatic Intervention Triggered</p>
-                  <p className="text-[10px] opacity-80 font-bold uppercase">Target Account: 987XXXX210 | Bank: SBI | Status: HOLD_QUEUED</p>
+                  <p className="text-[10px] opacity-80 font-bold uppercase">
+                    Actions: {(caseData.interventions.find(i => i.incident_id)?.actions_taken ?? []).join(' | ')} | Incident: {caseData.interventions.find(i => i.incident_id)?.incident_id ?? 'PENDING'} | Status: HOLD_QUEUED
+                  </p>
                 </div>
               </div>
               <button className="bg-white text-red-600 px-4 py-2 rounded-lg text-xs font-black hover:bg-slate-100 transition-colors">
