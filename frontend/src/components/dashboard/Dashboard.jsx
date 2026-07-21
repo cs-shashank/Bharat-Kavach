@@ -31,23 +31,14 @@ const Dashboard = () => {
 
   const [toast, setToast] = useState(null);
 
-  // On Mount: Fetch historical cases
+  // On Mount: Fetch historical cases for map/network — do NOT overwrite active case state
   useEffect(() => {
     const fetchCases = async () => {
       try {
         const response = await fetch(`${API_BASE}/cases`);
         const data = await response.json();
-        if (data.length > 0) {
-          const latest = data[0];
-          setCaseData(prev => ({
-            ...prev,
-            score: latest.risk_score,
-            stage: latest.stage,
-            findings: latest.legal_citations,
-            interventions: latest.interventions || [],
-            history: data
-          }));
-        }
+        // Only populate history for CrimeMap and FraudNetwork — never auto-fill score/stage/findings
+        setCaseData(prev => ({ ...prev, history: data }));
       } catch (error) {
         console.error("Failed to fetch cases:", error);
       }
@@ -143,12 +134,16 @@ const Dashboard = () => {
           <Shield className="text-accent-blue" size={24} />
         </div>
         <div className="flex flex-col gap-6 text-slate-500">
-          <Activity size={20} className="hover:text-white cursor-pointer" />
-          <MapIcon size={20} className="hover:text-white cursor-pointer" />
-          <Users size={20} className="hover:text-white cursor-pointer" />
+          <Activity size={20} className="hover:text-white cursor-pointer transition-colors" title="Transcript Analysis"
+            onClick={() => document.getElementById('transcript-panel')?.scrollIntoView({ behavior: 'smooth' })} />
+          <MapIcon size={20} className="hover:text-white cursor-pointer transition-colors" title="Crime Map"
+            onClick={() => document.getElementById('crime-map')?.scrollIntoView({ behavior: 'smooth' })} />
+          <Users size={20} className="hover:text-white cursor-pointer transition-colors" title="Fraud Network"
+            onClick={() => document.getElementById('fraud-network')?.scrollIntoView({ behavior: 'smooth' })} />
         </div>
         <div className="mt-auto">
-          <Bell size={20} className="text-slate-500 hover:text-white cursor-pointer" />
+          <Bell size={20} className="text-slate-500 hover:text-white cursor-pointer transition-colors" title="Interventions"
+            onClick={() => document.getElementById('intervention-log')?.scrollIntoView({ behavior: 'smooth' })} />
         </div>
       </nav>
 
@@ -191,14 +186,38 @@ const Dashboard = () => {
 
           {/* Intelligence Visualizers */}
           <div className="col-span-12 lg:col-span-5 space-y-8">
-            <TranscriptPanel
-              onResult={(data) => setCaseData(prev => ({ ...prev, id: data.id ?? prev.id, transcript: prev.transcript }))}
-              onSubmit={(text) => setCaseData(prev => ({ ...prev, transcript: text }))}
-            />
-            <div className="h-[350px]">
+            <div id="transcript-panel">
+              <TranscriptPanel
+                onResult={(data) => setCaseData(prev => ({
+                  ...prev,
+                  id: data.id ?? prev.id,
+                  score: data.risk_score ?? prev.score,
+                  stage: data.stage ?? prev.stage,
+                  findings: data.legal_citations ?? prev.findings,
+                  interventions: data.intervention_result
+                    ? [...prev.interventions, {
+                        type: 'FINANCIAL',
+                        action: data.intervention_result.actions_taken?.[0] ?? 'TRIGGERED',
+                        details: data.intervention_result.incident_id,
+                        timestamp: new Date().toISOString(),
+                        incident_id: data.intervention_result.incident_id,
+                        actions_taken: data.intervention_result.actions_taken,
+                      }]
+                    : prev.interventions,
+                  signals: {
+                    behavioral: data.risk_score ?? prev.score,
+                    legal: (data.legal_citations ?? []).some(f => f.verdict === 'confirmed_false') ? 0 : 100,
+                    vision: prev.signals.vision,
+                    protocol: prev.signals.protocol,
+                  },
+                }))}
+                onSubmit={(text) => setCaseData(prev => ({ ...prev, transcript: text }))}
+              />
+            </div>
+            <div id="crime-map" className="h-[350px]">
               <CrimeMap cases={caseData.history} />
             </div>
-            <div className="h-[350px]">
+            <div id="fraud-network" className="h-[350px]">
               <FraudNetwork cases={caseData.history} />
             </div>
             <DocumentPanel />
@@ -208,7 +227,9 @@ const Dashboard = () => {
           {/* Legal & Intervention Logs */}
           <div className="col-span-12 lg:col-span-4 space-y-8">
             <LegalAudit findings={caseData.findings} />
-            <InterventionLog logs={caseData.interventions} />
+            <div id="intervention-log">
+              <InterventionLog logs={caseData.interventions} />
+            </div>
           </div>
         </div>
 
