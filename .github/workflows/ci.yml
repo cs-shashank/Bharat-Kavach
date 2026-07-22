@@ -21,15 +21,22 @@ jobs:
           cache: pip
           cache-dependency-path: backend/requirements.txt
 
-      - name: Install dependencies
+      - name: Install system dependencies for OpenCV
+        run: sudo apt-get install -y libgl1-mesa-glx libglib2.0-0
+
+      - name: Install Python dependencies
         working-directory: backend
         run: pip install -r requirements.txt
 
-      - name: Run property tests
+      - name: Run property tests (no API key required)
         working-directory: backend
-        env:
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-        run: python -m pytest tests/ -v --tb=short -x --ignore=tests/test_analyze_endpoint.py
+        run: |
+          python -m pytest tests/test_evidence_exporter.py \
+                           tests/test_eval_pipeline.py \
+                           tests/test_ci_gate.py \
+                           tests/test_database.py \
+                           tests/test_metrics.py \
+                           -v --tb=short
 
   frontend-tests:
     name: Frontend Component Tests
