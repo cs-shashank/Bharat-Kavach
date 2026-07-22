@@ -37,6 +37,9 @@ backend/data/eval_results/*.json
 backend/test_aq_*.py
 backend/smoke_test.py
 
+# Kiro IDE internal planning files
+.kiro/
+
 # pytest cache
 .pytest_cache/
 backend/.pytest_cache/
