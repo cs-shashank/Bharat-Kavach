@@ -21,12 +21,18 @@ backend/.hypothesis/
 *.db
 
 # Generated evidence export bundles (runtime artifacts)
+backend/backend/
 backend/backend/data/evidence_exports/
 backend/data/evidence_exports/*.json
 backend/data/evidence_exports/*.pdf
 
 # CI eval run logs
 backend/ci_eval_run*.log
+backend/ci_eval_output.log
+
+# One-off debug/test scripts
+backend/test_aq_*.py
+backend/smoke_test.py
 
 # pytest cache
 .pytest_cache/
