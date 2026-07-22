@@ -16,3 +16,4 @@ PyMuPDF
 networkx
 Pillow
 reportlab==4.2.5
+pytest
