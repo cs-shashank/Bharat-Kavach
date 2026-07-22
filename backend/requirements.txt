@@ -10,6 +10,7 @@ rapidfuzz
 sqlalchemy
 aiosqlite
 hypothesis
+httpx
 google-genai
 PyMuPDF
 networkx
