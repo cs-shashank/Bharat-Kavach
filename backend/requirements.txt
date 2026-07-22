@@ -1,16 +1,12 @@
 fastapi
 uvicorn
 pydantic
-langchain
-langchain-google-genai
 python-dotenv
 opencv-python
 numpy
-whisper-timestamped
 requests
 python-multipart
 rapidfuzz
-sentence-transformers
 sqlalchemy
 aiosqlite
 hypothesis

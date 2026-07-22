@@ -30,6 +30,9 @@ backend/data/evidence_exports/*.pdf
 backend/ci_eval_run*.log
 backend/ci_eval_output.log
 
+# Eval result files — auto-generated on every CI run, keep only manually pinned ones
+backend/data/eval_results/*.json
+
 # One-off debug/test scripts
 backend/test_aq_*.py
 backend/smoke_test.py
