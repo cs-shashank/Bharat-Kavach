@@ -5,7 +5,7 @@ import { describe, it, expect, afterEach, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor, act, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as fc from 'fast-check';
-import TranscriptPanel from '../TranscriptPanel';
+import TranscriptPanel, { clearAnalysisCache } from '../TranscriptPanel';
 
 // Mock framer-motion: all motion.* elements render as plain HTML elements
 vi.mock('framer-motion', async () => {
@@ -40,6 +40,7 @@ describe('Property 1: Non-empty transcript always triggers a POST', () => {
   afterEach(() => {
     vi.restoreAllMocks();
     document.body.innerHTML = '';
+    clearAnalysisCache();
   });
 
   it(
@@ -51,6 +52,7 @@ describe('Property 1: Non-empty transcript always triggers a POST', () => {
           async (transcript) => {
             document.body.innerHTML = '';
             vi.restoreAllMocks();
+            clearAnalysisCache();
 
             // Mock fetch returning a successful response
             global.fetch = vi.fn().mockResolvedValueOnce({
@@ -72,7 +74,7 @@ describe('Property 1: Non-empty transcript always triggers a POST', () => {
             expect(textarea.value).toBe(transcript);
 
             const analyzeBtn = screen.getByRole('button', { name: /analyze/i });
-            await userEvent.click(analyzeBtn);
+            fireEvent.click(analyzeBtn);
 
             // Wait for fetch to be called
             await waitFor(() => {
@@ -87,7 +89,16 @@ describe('Property 1: Non-empty transcript always triggers a POST', () => {
                 headers: expect.objectContaining({
                   'Content-Type': 'application/json',
                 }),
-                body: JSON.stringify({ transcript, user_id: 'OFFICER_001' }),
+                body: expect.any(String),
+              })
+            );
+
+            const fetchCall = global.fetch.mock.calls[0];
+            const parsedBody = JSON.parse(fetchCall[1].body);
+            expect(parsedBody).toEqual(
+              expect.objectContaining({
+                transcript,
+                user_id: 'OFFICER_001',
               })
             );
           }

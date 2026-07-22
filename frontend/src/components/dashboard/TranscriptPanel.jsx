@@ -6,6 +6,7 @@ import { API_BASE } from '../../config.js';
 // Simple in-memory cache: transcript text → analysis result
 // Prevents burning API quota when the same transcript is submitted twice
 const _analysisCache = new Map();
+export const clearAnalysisCache = () => _analysisCache.clear();
 
 const TranscriptPanel = ({ onResult, onSubmit }) => {
   const [transcript, setTranscript] = useState('');

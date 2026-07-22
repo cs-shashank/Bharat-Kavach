@@ -12,5 +12,6 @@ aiosqlite
 hypothesis
 google-genai
 PyMuPDF
-
+networkx
+Pillow
 reportlab==4.2.5
